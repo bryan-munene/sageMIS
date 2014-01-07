@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  description: MyString
+  market_name: MyString
+  percentage_markup: 9.99
+  other_info: MyString
+
+two:
+  name: MyString
+  description: MyString
+  market_name: MyString
+  percentage_markup: 9.99
+  other_info: MyString

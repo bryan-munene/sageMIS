@@ -1,0 +1,56 @@
+<%= form_for(@item) do |f| %>
+  <% if @item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+      <% @item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :item_name %><br />
+    <%= f.text_field :item_name %>
+  </div>
+  <div class="field">
+    <%= f.label :item_attribute %><br />
+    <%= f.text_field :item_attribute %>
+  </div>
+  <div class="field">
+    <%= f.label :size %><br />
+    <%= f.text_field :size %>
+  </div>
+  <div class="field">
+    <%= f.label :buying_price %><br />
+    <%= f.text_field :buying_price %>
+  </div>
+  <div class="field">
+    <%= f.label :source %><br />
+    <%= f.text_field :source %>
+  </div>
+  <div class="field">
+    <%= f.label :tax_class %><br />
+
+    <%=select_tag "tax_class", options_from_collection_for_select(Taxcode.all, "id", "name"), prompt: "Select item tax class"%>
+  </div>
+  <div class="field">
+    <%= f.label :warehouse %><br />
+
+    <%=select_tag "warehouse", options_from_collection_for_select(Warehouse.all, "id", "name"), prompt: "Select warehouse"%>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+    <%= hidden_field_tag 'item_code', '' %><br />
+        <%= hidden_field_tag 'markup', 0 %><br />
+        <%= hidden_field_tag 'calculated_selling', 0 %><br />
+        <%= hidden_field_tag 'adjusted_price', 0 %><br />
+        <%= hidden_field_tag 'markup', 0 %><br />
+        <%= hidden_field_tag 'custom_size', 0 %><br />
+        <%= hidden_field_tag 'custom_attribute', 0 %><br />
+:q!
+    :::::::::::
+  </div>
+<% end %>

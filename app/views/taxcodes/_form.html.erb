@@ -1,0 +1,37 @@
+<%= form_for(@taxcode) do |f| %>
+  <% if @taxcode.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@taxcode.errors.count, "error") %> prohibited this taxcode from being saved:</h2>
+
+      <ul>
+      <% @taxcode.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :market_name %><br />
+    <%= f.text_field :market_name %>
+  </div>
+  <div class="field">
+    <%= f.label :percentage_markup %><br />
+    <%= f.text_field :percentage_markup %>
+  </div>
+  <div class="field">
+    <%= f.label :other_info %><br />
+    <%= f.text_field :other_info %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

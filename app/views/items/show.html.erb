@@ -1,0 +1,70 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Item code:</b>
+  <%= @item.item_code %>
+</p>
+
+<p>
+  <b>Item name:</b>
+  <%= @item.item_name %>
+</p>
+
+<p>
+  <b>Item attribute:</b>
+  <%= @item.item_attribute %>
+</p>
+
+<p>
+  <b>Size:</b>
+  <%= @item.size %>
+</p>
+
+<p>
+  <b>Buying price:</b>
+  <%= @item.buying_price %>
+</p>
+
+<p>
+  <b>Source:</b>
+  <%= @item.source %>
+</p>
+
+<p>
+  <b>Tax class:</b>
+  <%= @item.tax_class %>
+</p>
+
+<p>
+  <b>Warehouse:</b>
+  <%= @item.warehouse %>
+</p>
+
+<p>
+  <b>Markup:</b>
+  <%= @item.markup %>
+</p>
+
+<p>
+  <b>Calculated selling:</b>
+  <%= @item.calculated_selling %>
+</p>
+
+<p>
+  <b>Adjusted price:</b>
+  <%= @item.adjusted_price %>
+</p>
+
+<p>
+  <b>Custom size:</b>
+  <%= @item.custom_size %>
+</p>
+
+<p>
+  <b>Custom attribute:</b>
+  <%= @item.custom_attribute %>
+</p>
+
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>

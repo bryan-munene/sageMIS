@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @taxcode.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @taxcode.description %>
+</p>
+
+<p>
+  <b>Market name:</b>
+  <%= @taxcode.market_name %>
+</p>
+
+<p>
+  <b>Percentage markup:</b>
+  <%= @taxcode.percentage_markup %>
+</p>
+
+<p>
+  <b>Other info:</b>
+  <%= @taxcode.other_info %>
+</p>
+
+
+<%= link_to 'Edit', edit_taxcode_path(@taxcode) %> |
+<%= link_to 'Back', taxcodes_path %>

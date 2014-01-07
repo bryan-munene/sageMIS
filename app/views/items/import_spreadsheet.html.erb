@@ -1,0 +1,10 @@
+<div class="container">
+  <%=form_tag('/items/import_spreadsheet', multipart: true)  %>
+<div class="field">
+    <%= label_tag :file %><br />
+    <%= file_field_tag :data_file %>
+  </div>
+  <div class="actions">
+    <%= submit_tag :upload %>
+  </div>
+</div>

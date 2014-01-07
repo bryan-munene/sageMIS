@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  description: MyString
+  date: 2013-08-17 12:45:22
+  no_of_items: 1
+
+two:
+  name: MyString
+  description: MyString
+  date: 2013-08-17 12:45:22
+  no_of_items: 1

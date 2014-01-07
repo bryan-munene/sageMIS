@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Item:</b>
+  <%= @item_attribute_detail.item_id %>
+</p>
+
+<p>
+  <b>Attribute:</b>
+  <%= @item_attribute_detail.attribute_id %>
+</p>
+
+<p>
+  <b>Value:</b>
+  <%= @item_attribute_detail.value %>
+</p>
+
+
+<%= link_to 'Edit', edit_item_attribute_detail_path(@item_attribute_detail) %> |
+<%= link_to 'Back', item_attribute_details_path %>

@@ -1,0 +1,27 @@
+<h1>Listing item_attribute_details</h1>
+
+<table>
+  <tr>
+    <th>Item</th>
+    <th>Attribute</th>
+    <th>Value</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @item_attribute_details.each do |item_attribute_detail| %>
+  <tr>
+    <td><%= item_attribute_detail.item_id %></td>
+    <td><%= item_attribute_detail.attribute_id %></td>
+    <td><%= item_attribute_detail.value %></td>
+    <td><%= link_to 'Show', item_attribute_detail %></td>
+    <td><%= link_to 'Edit', edit_item_attribute_detail_path(item_attribute_detail) %></td>
+    <td><%= link_to 'Destroy', item_attribute_detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Item attribute detail', new_item_attribute_detail_path %>
