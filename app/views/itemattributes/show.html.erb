@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @itemattribute.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @itemattribute.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_itemattribute_path(@itemattribute) %> |
+<%= link_to 'Back', itemattributes_path %>

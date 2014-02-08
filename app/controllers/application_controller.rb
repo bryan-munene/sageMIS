@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  #before_filter :login_required
+  before_filter :login_required
   #before_filter { |c| Authorization.current_user = c.current_user }
   def login_required
     return if logged_in?
@@ -16,6 +16,12 @@ class ApplicationController < ActionController::Base
   def current_user
     @current_user = session[:user] if session[:user]
   end
+  def current_item
+    @current_item = session[:item] if session[:item]
+  end
+  def current_sale
+    @current_sale = session[:sale] if session[:sale]
+  end
   # A before filter for views that only authorized users can access
   def ensure_authorized(error_message)
     if logged_in?
@@ -28,7 +34,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def permission_denied
-  flash[:error] = "Sorry, you are not allowed to access that page."
+  flash[:error] = "Sorry, you are not allowed to access this module"
   redirect_to :controller=>"dashboard"
   end
 end

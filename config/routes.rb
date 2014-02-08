@@ -1,22 +1,26 @@
 PharmEngine::Application.routes.draw do
 
+  resources :itemattributes
+
+
   resources :items
 
 
   resources :item_attribute_details
 
 
+  get "dashboard/index"
   get "sessions/index"
-
   get "sessions/login"
   get "sessions/logout"
   post "sessions/login"
+  post "sessions/password_change"
 
   get "sessions/destroy"
 
   get "sessions/request_new"
 
-  get "sessions/password"
+  get "sessions/password_change"
 
   #Needs to be made cleaner
   get "items/import_spreadsheet"

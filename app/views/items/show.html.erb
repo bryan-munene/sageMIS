@@ -1,5 +1,8 @@
 <p id="notice"><%= notice %></p>
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>
 
+<%=render "additional_links" %>
 <p>
   <b>Item code:</b>
   <%= @item.item_code %>
@@ -64,7 +67,3 @@
   <b>Custom attribute:</b>
   <%= @item.custom_attribute %>
 </p>
-
-
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>

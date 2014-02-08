@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :item_attribute %><br />
-    <%= f.text_field :item_attribute %>
+    <%=select_tag "item_attribute", options_from_collection_for_select(Itemattribute.all, "name", "name"), prompt: "Select item attribute"%>
   </div>
   <div class="field">
     <%= f.label :size %><br />
@@ -26,6 +26,10 @@
   <div class="field">
     <%= f.label :buying_price %><br />
     <%= f.text_field :buying_price %>
+  </div>
+    <div class="field">
+    <%= f.label :markup %><br />
+    <%= f.text_field :markup %>
   </div>
   <div class="field">
     <%= f.label :source %><br />
@@ -44,13 +48,9 @@
   <div class="actions">
     <%= f.submit %>
     <%= hidden_field_tag 'item_code', '' %><br />
-        <%= hidden_field_tag 'markup', 0 %><br />
         <%= hidden_field_tag 'calculated_selling', 0 %><br />
         <%= hidden_field_tag 'adjusted_price', 0 %><br />
-        <%= hidden_field_tag 'markup', 0 %><br />
         <%= hidden_field_tag 'custom_size', 0 %><br />
         <%= hidden_field_tag 'custom_attribute', 0 %><br />
-:q!
-    :::::::::::
   </div>
 <% end %>

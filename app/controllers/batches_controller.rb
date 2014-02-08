@@ -2,7 +2,8 @@ class BatchesController < ApplicationController
   # GET /batches
   # GET /batches.json
   def index
-    @batches = Batch.all
+    current_item
+    @batches = @current_item.batches
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,7 +25,8 @@ class BatchesController < ApplicationController
   # GET /batches/new
   # GET /batches/new.json
   def new
-    @batch = Batch.new
+    current_item
+    @batch = @current_item.batches.new
 
     respond_to do |format|
       format.html # new.html.erb

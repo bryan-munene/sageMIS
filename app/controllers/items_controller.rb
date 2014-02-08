@@ -14,7 +14,8 @@ class ItemsController < ApplicationController
   # GET /items/1.json
   def show
     @item = Item.find(params[:id])
-
+    #store the current item in the session
+    session[:item] = @item
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @item }
@@ -48,7 +49,12 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.new(params[:item])
-
+    #Hack to include the other parameters
+    @item.tax_class = params[:tax_class]
+    @item.warehouse = params[:warehouse]
+    @item.item_attribute = params[:item_attribute]
+    @item.calculated_selling = params[:calculated_selling]
+    @item.adjusted_price = params[:adjusted_price]
     respond_to do |format|
       if @item.save
         format.html { redirect_to @item, item: 'Item was successfully created.' }

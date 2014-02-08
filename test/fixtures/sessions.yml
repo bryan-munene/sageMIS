@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  timeout: 1
+  login_ip: MyString
+  login_status: MyString
+
+two:
+  user_id: 1
+  timeout: 1
+  login_ip: MyString
+  login_status: MyString

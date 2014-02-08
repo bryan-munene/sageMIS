@@ -1,3 +1,4 @@
 class Batch < ActiveRecord::Base
-  attr_accessible :date, :description, :name, :no_of_items
+  belongs_to :item
+  attr_accessible :date, :description, :name, :no_of_items,:expiry_date,:batch_no
 end

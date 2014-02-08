@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  model: MyString
+  prevvalue: MyString
+  currentvalue: MyString
+  user: 1
+  description: MyString
+  status: MyString
+  additionalinfo: MyString
+
+two:
+  model: MyString
+  prevvalue: MyString
+  currentvalue: MyString
+  user: 1
+  description: MyString
+  status: MyString
+  additionalinfo: MyString

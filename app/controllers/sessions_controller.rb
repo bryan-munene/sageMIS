@@ -1,13 +1,12 @@
 class SessionsController < ApplicationController
-
-  before_filter :login_required,:only=>['change_password']
+before_filter :login_required,:only=>['password_change']
   def index
     redirect_to :action=>'login'
   end
   def login
     @session=nil
     if request.post?
-      @login=User.find_by_username(params[:user][:login])
+      @login=User.find_by_user_name(params[:user][:login])
 
       if @login
       @session = Session.new(:user_id=>@login.id)
@@ -15,21 +14,27 @@ class SessionsController < ApplicationController
       if session[:user] = User.authenticate(params[:user][:login], params[:user][:password])
         @session.login_status="success"
         if @session.save
-        flash[:notice]  = "Welcome "+params[:user][:login]+",Your Login was successful"
         #Rails.logger.debug{"Login was successful for "+params[:user][:login].to_s}
-        if session[:return_to]
+         Rails.logger.debug{@login.inspect}
+        if @login.is_first_time.eql?(1)
+          flash[:notice]  = "Welcome "+params[:user][:login]+",Your first Login was successful.Please change your default password"
+          redirect_to :action => 'password_change', :update_first=>1 and return
+        else
+          flash[:notice]  = "Welcome "+params[:user][:login]+",Your Login was successful"
+          if session[:return_to]
           @return =session[:return_to]
             session[:return_to] = nil
-         redirect_to(@return,:notice=>"Login was successful")
+        redirect_to(@return,:notice=>"Login was successful")  and return
         else
         redirect_to :controller=>'dashboard',:action => 'index'
+        end
         end
         end
       else
         @session.login_status="failed"
         if @session.save
         flash[:error] = "Login failed,please try again."
-       # Rails.logger.debug{"Login failed for user "+params[:user][:login].to_s}
+        #Rails.logger.debug{"Login failed for user "+params[:user][:login].to_s}
         end
       end
     else
@@ -42,7 +47,7 @@ class SessionsController < ApplicationController
   def logout
     @session=Session.find_all_by_user_id(session[:user].id).last
     if @session
-      @session.time_out= DateTime.now
+      @session.timeout= DateTime.now
     end
     session[:user] = nil
     session[:return_to] = nil
@@ -54,7 +59,8 @@ class SessionsController < ApplicationController
       Rails.logger.error{"Session logout details were not updated correctly "}
       #Rails.logger.error{@session.inspect}
     end
-    redirect_to root_url
+    redirect_to :controller => "sessions" ,:action =>"login" and return
+
   end
 
   def forgot_password
@@ -69,13 +75,26 @@ class SessionsController < ApplicationController
     end
   end
 
-  def change_password
+  def password_change
     @user=session[:user]
     if request.post?
-      @user.update_attributes(:password=>params[:user][:password], :password_confirmation => params[:user][:password_confirmation])
+
+      if  params[:user][:password].eql?(params[:user][:password_confirmation])
+         if @user
+        User.change_password(@user.user_name,params[:user][:password])
+      #@user.update_attributes(:password=>params[:user][:password], :password_confirmation => params[:user][:password_confirmation])
       if @user.save
         flash[:notice
-        ]="Password Changed"
+        ]="Password Successfully Changed"
+        redirect_to :controller=>'dashboard',:action => 'index'
+      end
+      else
+          flash[:error
+        ]="Password Could not be Changed"
+      end
+      else
+            flash[:error
+        ]="Passwords entered do not match"
       end
     end
   end
