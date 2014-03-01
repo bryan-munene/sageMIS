@@ -3,8 +3,7 @@ class BatchesController < ApplicationController
   # GET /batches.json
   def index
     current_item
-    @batches = @current_item.batches
-
+    @batches = Batch.find_all_by_item_id(@current_item)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @batches }
@@ -26,7 +25,7 @@ class BatchesController < ApplicationController
   # GET /batches/new.json
   def new
     current_item
-    @batch = @current_item.batches.new
+    @batch = Batch.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,6 +42,10 @@ class BatchesController < ApplicationController
   # POST /batches.json
   def create
     @batch = Batch.new(params[:batch])
+    current_item
+   # Rails.logger.debug("using item number "+ @current_item.to_s)
+    @batch.item_id= @current_item
+
 
     respond_to do |format|
       if @batch.save

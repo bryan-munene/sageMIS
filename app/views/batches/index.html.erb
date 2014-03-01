@@ -1,5 +1,5 @@
+<%if@batches.size>0%>
 <h1>Listing batches</h1>
-
 <table>
   <tr>
     <th>Name</th>
@@ -23,7 +23,9 @@
   </tr>
 <% end %>
 </table>
-
 <br />
+    <% else%>
+<%= link_to 'Post New Batch', new_batch_path %>
+<% end if %>
 
-<%= link_to 'New Batch', new_batch_path %>
+

@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
     @current_user = session[:user] if session[:user]
   end
   def current_item
-    @current_item = session[:item] if session[:item]
+    @current_item = session[:item_id] if session[:item_id]
   end
   def current_sale
     @current_sale = session[:sale] if session[:sale]

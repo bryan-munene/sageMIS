@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
     end
     def self.encrypt(pass, salt)
       #Rails.logger.debug(pass +" and salt is "+salt)
+      salt = "" if salt.nil?
       Digest::SHA1.hexdigest(pass+salt)
     end
 
@@ -29,7 +30,7 @@ class User < ActiveRecord::Base
 
       u=find(:first, :conditions=>["user_name = ?", login])
 
-      return nil if u.nil?
+      return nil if u.nil? or pass.nil? or login.nil?
       #Rails.logger.debug{User.encrypt(pass, u.salt)}
       return u if User.encrypt(pass, u.salt).eql?(u.hashed_password)
     end

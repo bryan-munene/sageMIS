@@ -7,7 +7,7 @@ before_filter :login_required,:only=>['password_change']
     @session=nil
     if request.post?
       @login=User.find_by_user_name(params[:user][:login])
-
+      #Rails.logger.debug{"Params are "+params[:user][:login].to_s + params[:user][:password].to_s}
       if @login
       @session = Session.new(:user_id=>@login.id)
       @session.login_ip=request.remote_ip
