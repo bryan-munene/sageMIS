@@ -3,7 +3,7 @@ class BatchesController < ApplicationController
   # GET /batches.json
   def index
     current_item
-    @batches = Batch.find_all_by_item_id(@current_item)
+    @batches = Batch.paginate(:page => params[:page], :per_page => 10).find_all_by_item_id(@current_item)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @batches }

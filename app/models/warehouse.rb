@@ -1,6 +1,6 @@
 class Warehouse < ActiveRecord::Base
   include Codegen
-  attr_accessible :address, :location, :name ,:whcode
+  attr_accessible :address, :location, :name ,:whcode,:creator
   before_save :capitalize_item_name
   after_save :generate_code
   def capitalize_item_name

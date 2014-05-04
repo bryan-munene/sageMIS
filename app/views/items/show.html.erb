@@ -1,8 +1,18 @@
-<p id="notice"><%= notice %></p>
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
-
-<%=render "additional_links" %>
+<div class="panel panel-default">
+ <div class="panel-heading">Viewing <%= @item.item_name %></div>
+  <div class="panel-body">
+<%=render "layouts/additional_links" %>
+<div class="panel panel-default">
+  <% stock_level_detail = stock_display(@item.id) %>
+  <% @stock_level = stock_level_detail[:r_percent] %>
+  <p>Current stock level: </p>
+<div class="progress progress-striped">
+         <div class="progress-bar <%=display_product_level_color(@stock_level)%>" role="progressbar" aria-valuenow="<%=@stock_level.to_i%>" aria-valuemin="0" aria-valuemax="<%=100.to_i%>" style="width:<%= @stock_level %>%">
+</div>
+</div>
+<span class="text-muted">Number of Batches: <%= stock_level_detail[:counter] %></span>|<span class="text-muted">Total Remaining: <%= stock_level_detail[:total_remaining] %></span>|<span class="text-muted">Total Number of Items: <%= stock_level_detail[:total] %></span></br>
+</div>
+<div class="panel panel-default">
 <p>
   <b>Item code:</b>
   <%= @item.item_code %>
@@ -25,7 +35,7 @@
 
 <p>
   <b>Buying price:</b>
-  <%= @item.buying_price %>
+  <%= Settings.currency.to_s+" "+@item.buying_price.to_s %>
 </p>
 
 <p>
@@ -35,35 +45,28 @@
 
 <p>
   <b>Tax class:</b>
-  <%= @item.tax_class %>
+  <%= Taxcode.find_by_id(@item.tax_class).description %>
 </p>
 
 <p>
   <b>Warehouse:</b>
-  <%= @item.warehouse %>
+  <%= Warehouse.find_by_id(@item.warehouse).name %>
 </p>
 
 <p>
   <b>Markup:</b>
-  <%= @item.markup %>
+  <%= @item.markup.to_s + "%".to_s%>
 </p>
 
 <p>
   <b>Calculated selling:</b>
-  <%= @item.calculated_selling %>
+  <%= Settings.currency.to_s+" "+@item.calculated_selling.to_s %>
 </p>
 
 <p>
   <b>Adjusted price:</b>
-  <%= @item.adjusted_price %>
+  <%= Settings.currency.to_s+" "+@item.adjusted_price.to_s %>
 </p>
-
-<p>
-  <b>Custom size:</b>
-  <%= @item.custom_size %>
-</p>
-
-<p>
-  <b>Custom attribute:</b>
-  <%= @item.custom_attribute %>
-</p>
+</div>
+  </div>
+</div>

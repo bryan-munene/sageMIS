@@ -1,0 +1,35 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Listing Sales </div>
+  <div class="panel-body">
+<table>
+  <thead>
+    <tr>
+    <th>Value</th>
+    <th>Float</th>
+    <th>Number of items</th>
+    <th>User</th>
+    <th>Mode of payment</th>
+    <th>Till no</th>
+    <th></th>
+    </tr>
+  </thead>
+<tbody>
+<% @sales.each do |sale| %>
+  <tr>
+    <td><%= sale.value %></td>
+    <td><%= sale.float %></td>
+    <td><%= sale.number_of_items %></td>
+    <td><%= sale.user %></td>
+    <td><%= sale.mode_of_payment %></td>
+    <td><%= sale.till_no %></td>
+    <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  </tbody>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Sale', new_sale_path %>
+</div>
+</div>

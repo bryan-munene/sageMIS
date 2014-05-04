@@ -2,8 +2,8 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
-
+    #@items = Item.all
+    @items = Item.paginate(:page => params[:page], :per_page => 15)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @items }
@@ -13,9 +13,11 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
-    @item = Item.find(params[:id])
+    item_id = params[:id]
+    @item = Item.find(item_id)
     #store the current item in the session
     session[:item_id] = @item.id
+    current_item
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @item }
@@ -42,7 +44,14 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
-    @item = Item.find(params[:id])
+
+    if params[:id].to_i > 0
+      item_id = params[:id]
+    else
+      current_item
+      item_id = @current_item
+    end
+    @item = Item.find(item_id)
   end
 
   # POST /items

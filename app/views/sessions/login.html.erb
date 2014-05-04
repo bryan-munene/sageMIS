@@ -1,37 +1,34 @@
-<div id="login" align="center">
-  <%=form_tag '',:id=>"loginform",:class=>"rounded",:method=>"POST" %>
-  <h3>Login</h3>
-  <div class="field">
-    <label for="user_login">Login:</label><br/>
-    <%= text_field "user", "login", :size => 20,:class=>"input" %>
-    <!--p class="hint">Enter your username.</p-->
-  </div>
-  <br/>
-  <div class="field">
-    <label for="user_password">Password:</label><br/>
-    <%= password_field "user", "password", :size => 20,:class=>"input" %>
-    <!--p class="hint">Enter your password.</p-->
-  </div>
-  <br/>
-  <%= submit_tag "Login",:class=>"button" %>
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <title>Sage MIS</title>
+  <%= stylesheet_link_tag    "application","login", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <style id="holderjs-style" type="text/css"></style></head>
+  <body class="login">
+    <div class="container">
+      
+      <form class="form-signin" role="form" method="POST">
+        <%= render "layouts/notifications" %>
+        <h2 class="form-signin-heading">Sage MIS</h2>
+        <%= text_field "user", "login", :size => 20,:class=>"form-control", :placeholder=>"Username", :required=>"",:autofocus=>""%>
+        <!--<input id="login" type="text" class="form-control" placeholder="Username" required="" autofocus="">-->
+        <!--<input id="password"type="password" class="form-control" placeholder="Password" required="">-->
+        <%= password_field "user", "password", :size => 20,:class=>"form-control", :placeholder=>"Password", :required=>"" %>
+        <!--<label class="checkbox">
+          <input type="checkbox" value="remember-me"> Keep my session
+        </label>-->
+        <!--<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>-->
+        <%= submit_tag "Login",:class=>"btn btn-lg btn-primary btn-block" %>
+      </form>
+    </div>
+    <div id="footer" style="padding:10px 0; bottom:0px;">
+       <div class="footer"><center><p class="text-muted">&copy;<%=DateTime.now.year.to_s%> SAGE Pharmacy &bull; Powered by e-consult-systems </p></center> </div>
 </div>
-<!--
-<div id="login" align="center">
-
-<form id="loginform" class="rounded" method="post" action="">
-<h3>Login Form</h3>
-
-<div class="field">
-    <label for="username">Username:</label>
-    <input type="text" class="input" name="username" id="username" />
-    <p class="hint">Enter your username.</p>
-</div>
- <br/>
-<div class="field">
-    <label for="password">Password:</label>
-    <input type="password" class="input" name="password" id="password" />
-    <p class="hint">Enter your password.</p>
-</div>
-
-<input type="submit" name="Login"  class="button" value="Submit" />
-</form>-->
+</body></html>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  value: MyString
+  float: MyString
+  number_of_items: 1
+  user: 1
+  mode_of_payment: 1
+  till_no: 1
+
+two:
+  value: MyString
+  float: MyString
+  number_of_items: 1
+  user: 1
+  mode_of_payment: 1
+  till_no: 1

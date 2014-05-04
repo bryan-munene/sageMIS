@@ -1,3 +1,6 @@
+<%=render "layouts/additional_links" %>
+<table>
+  <tr><td>
 <%= form_for(@batch) do |f| %>
   <% if @batch.errors.any? %>
     <div id="error_explanation">
@@ -9,25 +12,34 @@
       <% end %>
       </ul>
     </div>
-  <% end %>
-
+  <% end %></td></tr>
+ <tr>
   <div class="field">
-    <%= f.label :batch_number %><br />
-    <%= f.text_field :batch_no %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :expiry_date %><br />
-    <%= f.date_select :expiry_date %>
-  </div>
-  <div class="field">
-    <%= f.label :no_of_items %><br />
-    <%= f.number_field :no_of_items %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+    <td><%= f.label :batch_number %><br /></td>
+    <td> <%= f.text_field :batch_no %></td>
+  </div> </tr>
+ </tr>
+ <tr>   <div class="field">
+    <td><%= f.label :batch_name %><br />      </td>
+    <td> <%= f.text_field :name %>             </td>
+  </div> </tr>
+  <tr><div class="field">
+    <td><%= f.label :description %><br /> </td>
+    <td> <%= f.text_field :description %></td>
+  </div> </tr>
+  <tr><div class="field">
+    <td><%= f.label :expiry_date %><br /></td>
+    <td>
+      <input type="text" data-behaviour='datepicker' >
+    </td>
+  </div> </tr>
+  <tr><div class="field">
+    <td><%= f.label :no_of_items %><br /> </td>
+    <td> <%= f.number_field :no_of_items %></td>
+  </div></tr>
+  <tr><div class="actions">
+    <td></td><td><%= f.submit "Add Batch", :class=>"btn btn-default"%></td>
   </div>
 <% end %>
+  </tr>
+ </table>

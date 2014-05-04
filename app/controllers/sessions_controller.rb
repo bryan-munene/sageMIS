@@ -15,7 +15,7 @@ before_filter :login_required,:only=>['password_change']
         @session.login_status="success"
         if @session.save
         #Rails.logger.debug{"Login was successful for "+params[:user][:login].to_s}
-         Rails.logger.debug{@login.inspect}
+       #  Rails.logger.debug{@login.inspect}
         if @login.is_first_time.eql?(1)
           flash[:notice]  = "Welcome "+params[:user][:login]+",Your first Login was successful.Please change your default password"
           redirect_to :action => 'password_change', :update_first=>1 and return
@@ -26,7 +26,7 @@ before_filter :login_required,:only=>['password_change']
             session[:return_to] = nil
         redirect_to(@return,:notice=>"Login was successful")  and return
         else
-        redirect_to :controller=>'dashboard',:action => 'index'
+        redirect_to :controller=>'dashboard',:action => 'index' and return
         end
         end
         end
@@ -35,13 +35,16 @@ before_filter :login_required,:only=>['password_change']
         if @session.save
         flash[:error] = "Login failed,please try again."
         #Rails.logger.debug{"Login failed for user "+params[:user][:login].to_s}
+        render :layout=> false
         end
       end
     else
       flash[:error] = "Login failed,please try again."
-       # Rails.logger.debug{"Login failed for user "+params[:user][:login].to_s}
+        #Rails.logger.debug{"Login failed for user "+params[:user][:login].to_s}
+      #render :layout=> false
     end
     end
+    render :layout=> false
   end
 
   def logout

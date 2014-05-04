@@ -1,0 +1,6 @@
+<div class="panel-heading">Adding a Product</div>
+<div class="panel-body">
+
+<%= render 'form' %>
+</div>
+</div>

@@ -1,31 +1,55 @@
-<%if@batches.size>0%>
-<h1>Listing batches</h1>
-<table>
+<div class="panel panel-default">
+  <div class="panel-heading">Listing batches for product <%=Item.find(@current_item).item_name%></div>
+  <div class="panel-body">
+<%=render "layouts/additional_links" %>
+<p><%= link_to 'Post New Batch', new_batch_path %></p>
+<%if @batches.size > 0 %>
+
+<table class="table">
+  <thead>
   <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Date</th>
-    <th>No of items</th>
-    <th></th>
+    <th>Detail</th>
+    <th>Expiry Date</th>
+    <th>Status</th>
     <th></th>
     <th></th>
   </tr>
-
+</thead>
 <% @batches.each do |batch| %>
-  <tr>
-    <td><%= batch.name %></td>
-    <td><%= batch.description %></td>
-    <td><%= batch.date %></td>
-    <td><%= batch.no_of_items %></td>
-    <td><%= link_to 'Show', batch %></td>
+  <tbody>
+    <tr>
+    <td>
+      <div>
+    <strong><%= batch.name %></strong></br>
+    <span class="text-muted"><%= batch.description %></span></br>
+    <span class="text-muted">created:<%= batch.created_at.nil? ? ("unknown") : (time_ago_in_words(batch.created_at) +" ago")%></span></br>
+    <span class="text-muted">by:<%= batch.creator.nil? ? ("unknown") : (batch.creator)%></span>
+  </div>
+    </td>
+    
+    <td><strong></strong><%= presentable_date(batch.date) %></strong></td>
+    <td>
+      <div class="progress progress-striped">
+        <% @batch_level = batch_display(batch.remaining_items.to_f,batch.no_of_items.to_f) %>
+        
+  <div class="progress-bar <%=display_batch_level_color(@batch_level)%>" role="progressbar" aria-valuenow="<%=batch.no_of_items.to_i%>" aria-valuemin="0" aria-valuemax="<%=batch.no_of_items.to_i%>" style="width:<%= @batch_level %>%">
+  </div>
+</div>
+      <span class="text-muted">Remaining:<%= batch.remaining_items.to_i %></span></br>
+      <span class="text-muted">Total:<%= batch.no_of_items %></span>
+    </td>
     <td><%= link_to 'Edit', edit_batch_path(batch) %></td>
     <td><%= link_to 'Destroy', batch, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
+  </tbody>
+
 <% end %>
 </table>
+<%= will_paginate @items, renderer: BootstrapPagination::Rails %>
 <br />
     <% else%>
-<%= link_to 'Post New Batch', new_batch_path %>
-<% end if %>
+    <p>There are no batches for this product</p>
 
-
+<% end %>
+</div>
+</div>

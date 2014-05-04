@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Value:</b>
+  <%= @sale.value %>
+</p>
+
+<p>
+  <b>Float:</b>
+  <%= @sale.float %>
+</p>
+
+<p>
+  <b>Number of items:</b>
+  <%= @sale.number_of_items %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @sale.user %>
+</p>
+
+<p>
+  <b>Mode of payment:</b>
+  <%= @sale.mode_of_payment %>
+</p>
+
+<p>
+  <b>Till no:</b>
+  <%= @sale.till_no %>
+</p>
+
+
+<%= link_to 'Edit', edit_sale_path(@sale) %> |
+<%= link_to 'Back', sales_path %>

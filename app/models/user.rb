@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   require 'digest/sha1'
-  attr_accessible :archived, :email, :first_name, :is_locked, :last_name, :password, :salt, :user_name
+  attr_accessible :archived, :email, :first_name, :is_locked, :last_name, :password, :salt, :user_name,:creator,:hashed_password
   validates_length_of :user_name, :within => 3..40
     # validates_length_of :password, :within => 5..40
   validates_presence_of :user_name, :email,:first_name,:last_name

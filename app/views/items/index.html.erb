@@ -1,7 +1,7 @@
 <h2>Products</h2>
 <div>
-<%= link_to 'New Item', new_item_path,:class => 'btn btn-primary' %>
-<%= link_to 'Import Existing', new_item_path(:type=>'1'),:class => 'btn btn-primary' %>
+<%= link_to 'New Item', new_item_path,:class => 'btn btn-lg btn-primary' %>
+<%= link_to 'Import Existing', new_item_path(:type=>'1'),:class => 'btn btn-lg btn-primary' %>
 </div>
 <table class="table table-striped">
   <thead>
@@ -26,6 +26,7 @@
 <% end %>
  </tbody>
 </table>
+<%= will_paginate @items, renderer: BootstrapPagination::Rails %>
 <div>
 <%= link_to 'New Item', new_item_path,:class => 'btn btn-primary' %>
 <%= link_to 'Import Existing', new_item_path(:type=>'1'),:class => 'btn btn-primary' %>

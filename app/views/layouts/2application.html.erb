@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<title> SAGE MANAGEMENT INFORMATION SYSTEM</title>
+<div id="body">
+
+  <div id="top-section">
+  <div id="banner"></div>
+    <div class="container">
+    <header class="navbar navbar-inverse">
+
+    <div>
+         <nav>
+            <ul class="nav pull-left">
+              <li><%= link_to "SALES", '#' %></li>
+              <li><%= link_to "INVENTORY", items_path %></li>
+              <li><%= link_to "SEARCH", '#' %></li>
+              <li><%= link_to "SETTINGS", :controller => "settings",:action => "index"  %></li>
+              <li><%= link_to "HELP", '#' %></li>
+            </ul>
+          </nav>
+    </div>
+
+  </header>
+      </div>
+</div>
+
+ <div>
+  <div class="container-fluid">
+    <div class="caption">
+      <%= render :partial=>'layouts/notifications' %>
+    </div>
+     <div class="container">
+       <%= yield %>
+     </div>
+    </div>
+     </div>
+<div id="footer">
+       <div class="footer">&copy;<%=DateTime.now.year.to_s%> SAGE pharmacy <div>Powered by e-consult-systems</div></div>
+</div>
+</body>
+
+
+</html>

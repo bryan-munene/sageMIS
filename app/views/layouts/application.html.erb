@@ -1,53 +1,77 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <title>Sage MIS</title>
+  <%= stylesheet_link_tag    "application","dashboard", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-</head>
-
+  <style id="holderjs-style" type="text/css"></style></head>
 <body>
-<title> SAGE MANAGEMENT INFORMATION SYSTEM</title>
-<div id="body">
-
-  <div id="top-section">
-  <div id="banner"></div>
-    <div class="container">
-    <header class="navbar navbar-inverse">
-
-    <div>
-         <nav>
-            <ul class="nav pull-left">
-              <li><%= link_to "SALES", '#' %></li>
-              <li><%= link_to "INVENTORY", items_path %></li>
-              <li><%= link_to "SEARCH", '#' %></li>
-              <li><%= link_to "SETTINGS", :controller => "settings",:action => "index"  %></li>
-              <li><%= link_to "HELP", '#' %></li>
-            </ul>
-          </nav>
-    </div>
-
-  </header>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><strong>Sage MIS</strong></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "Dashboard",:controller=>"dashboard" %></li>
+            <li><%= link_to "Settings",:controller=>"settings" %></li>
+            <li><%= link_to @current_user.user_name,user_path(@current_user) %></li>
+            <li><%= link_to "Help",:controller=>"help" %></li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </div>
       </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="<%= "active" if controller.controller_name.to_s.eql?"dashboard"%>" ><%= link_to "Overview",:controller=>"dashboard" %></li>
+            <li class="<%= "active" if controller.controller_name.to_s.eql?"items"%>" ><%= link_to "Inventory",:controller=>"items" %></li>
+            <li class="<%= "active" if controller.controller_name.to_s.eql?"sales"%>" ><%= link_to "Sales",:controller=>"sales" %></li>
+            <li class="<%= "active" if controller.controller_name.to_s.eql?"reports"%>" ><%= link_to "Reports",:controller=>"reports" %></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li class="disabled"><a href="">Quick Actions</a></li>
+            <li class="<%= "active" if controller.controller_name.to_s.eql?"items" and controller.action_name.to_s.eql?"new"  %>" ><%= link_to "Add Product",:controller=>"items",:action=>"new" %></li>
+            <li class="<%= "active" if controller.controller_name.to_s.eql?"sales"and controller.action_name.to_s.eql?"new"%>"  ><%= link_to "Add Sale",:controller=>"sales",:action=>"new" %></li>
+            <li class="<%= "active" if controller.controller_name.to_s.eql?"batches"and controller.action_name.to_s.eql?"new"%>" ><%= link_to "Add Batch",:controller=>"batches",:action=>"new" %></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li class="disabled"><a href="">Quick Reports</a></li>
+            <li><a href="">Inventory Report</a></li>
+            <li><a href="">Daily Sales Report</a></li>
+          </ul>
+        </div>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<div class="container">
+  <!--<ol class="breadcrumb">
+  <li><a href="#"><%=controller.controller_name.to_s%></a></li>
+  <li><a href="#"><%=controller.action_name.to_s%></a></li>
+  <li class="active">Data</li>
+</ol>-->
+<%= render "layouts/notifications" %>
+<%= yield %>
 </div>
-
- <div>
-  <div class="container-fluid">
-    <div class="caption">
-      <%= render :partial=>'layouts/notifications' %>
-    </div>
-     <div class="container">
-       <%= yield %>
-     </div>
-    </div>
-     </div>
-<div id="footer">
-       <div class="footer">&copy;<%=DateTime.now.year.to_s%> SAGE pharmacy <div>Powered by e-consult-systems</div></div>
 </div>
 </body>
-
-
+<div id="footer" style="padding:10px 0; bottom:0px;">
+       <div class="footer"><center><p class="text-muted">&copy;<%=DateTime.now.year.to_s%> SAGE Pharmacy &bull; Powered by e-consult-systems </p></center> </div>
+</div>
+</body>
 </html>
+
