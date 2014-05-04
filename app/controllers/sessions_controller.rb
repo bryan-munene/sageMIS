@@ -24,8 +24,10 @@ before_filter :login_required,:only=>['password_change']
           if session[:return_to]
           @return =session[:return_to]
             session[:return_to] = nil
+            current_user
         redirect_to(@return,:notice=>"Login was successful")  and return
         else
+          current_user
         redirect_to :controller=>'dashboard',:action => 'index' and return
         end
         end
