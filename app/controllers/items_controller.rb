@@ -44,7 +44,7 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
-
+    current_item
     if params[:id].to_i > 0
       item_id = params[:id]
     else

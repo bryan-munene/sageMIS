@@ -2,6 +2,6 @@
   <li class="<%= "active" if controller.controller_name.to_s.eql?"items" and controller.action_name.to_s.eql?"show"  %>"><%= link_to 'Product', :controller=>"items",:action=>"show",:id=>@current_item %></li>
   <li class="<%= "active" if controller.controller_name.to_s.eql?"batches" and controller.action_name.to_s.eql?"index"  %>"><%= link_to "Manage Batches",batches_path %></li>
   <li class="<%= "active" if controller.controller_name.to_s.eql?"orders" and controller.action_name.to_s.eql?"new"  %>"><%= link_to 'Manage orders','#' %></li>
-  <li class="<%= "active" if controller.controller_name.to_s.eql?"items" and controller.action_name.to_s.eql?"edit"  %>"><%= link_to 'Manage Product', edit_item_path(Item.find(@current_item)) %></li>
+  <li class="<%= "active" if controller.controller_name.to_s.eql?"items" and controller.action_name.to_s.eql?"edit"  %>"><%= link_to 'Manage Product', :controller=>"items",:action=>"edit",:id=>@current_item%></li>
   <li class="<%= "active" if controller.controller_name.to_s.eql?"sales" and controller.action_name.to_s.eql?"new"  %>"><%= link_to 'View Sales',sales_path %></li>
 </ul>
