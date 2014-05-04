@@ -7,6 +7,11 @@ gem 'rails', '3.2.9.rc3'
 
 gem 'sqlite3'
 gem 'mysql2'
+gem 'rails_config'
+gem 'will_paginate'
+gem  'jquery_datepicker'
+gem 'bootstrap-datepicker-rails'
+gem 'will_paginate-bootstrap'
 
 # Gems used only for assets and not required
 # in production environments by default.

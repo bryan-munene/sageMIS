@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140208134335) do
+ActiveRecord::Schema.define(:version => 20140504091040) do
 
   create_table "backuplogs", :force => true do |t|
     t.datetime "backup_log_date"
@@ -21,18 +21,28 @@ ActiveRecord::Schema.define(:version => 20140208134335) do
     t.integer  "user_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.integer  "creator"
   end
 
   create_table "batches", :force => true do |t|
     t.string   "name"
     t.string   "description"
     t.datetime "date"
-    t.integer  "no_of_items"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.float    "no_of_items"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.datetime "expiry_date"
     t.string   "batch_no"
     t.integer  "item_id"
+    t.float    "remaining_items"
+    t.integer  "is_active"
+    t.float    "ok_limit"
+    t.float    "mid_limit"
+    t.float    "below_limit"
+    t.integer  "empty_batch"
+    t.integer  "user_choice"
+    t.integer  "auto_shift"
+    t.integer  "creator"
   end
 
   create_table "change_types", :force => true do |t|
@@ -55,6 +65,7 @@ ActiveRecord::Schema.define(:version => 20140208134335) do
     t.string   "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "creator"
   end
 
   create_table "items", :force => true do |t|
@@ -87,6 +98,26 @@ ActiveRecord::Schema.define(:version => 20140208134335) do
     t.string   "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "creator"
+  end
+
+  create_table "sale_items", :force => true do |t|
+    t.integer  "item_id"
+    t.integer  "sale_id"
+    t.integer  "batch_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "sales", :force => true do |t|
+    t.string   "value"
+    t.string   "float"
+    t.integer  "number_of_items"
+    t.integer  "user"
+    t.integer  "mode_of_payment"
+    t.integer  "till_no"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "sessions", :force => true do |t|
@@ -106,6 +137,7 @@ ActiveRecord::Schema.define(:version => 20140208134335) do
     t.string   "other_info"
     t.datetime "created_at",                                       :null => false
     t.datetime "updated_at",                                       :null => false
+    t.integer  "creator"
   end
 
   create_table "trails", :force => true do |t|
@@ -144,6 +176,7 @@ ActiveRecord::Schema.define(:version => 20140208134335) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "whcode"
+    t.integer  "creator"
   end
 
 end

@@ -1,5 +1,11 @@
 PharmEngine::Application.routes.draw do
 
+  resources :sale_items
+
+
+  resources :sales
+
+
   resources :itemattributes
 
 
@@ -16,6 +22,7 @@ PharmEngine::Application.routes.draw do
   post "sessions/login"
   post "sessions/password_change"
 
+
   get "sessions/destroy"
 
   get "sessions/request_new"
@@ -24,7 +31,10 @@ PharmEngine::Application.routes.draw do
 
   #Needs to be made cleaner
   get "items/import_spreadsheet"
+  get "items/edit"
   get "settings/index"
+  get "help/index"
+  get "reports/index"
   post "items/import_spreadsheet"
 
   resources :users
