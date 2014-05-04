@@ -1,0 +1,26 @@
+#general settings
+#when set to 1,the default values will be used for the application. Please use this only for demo or development purposes
+#warehouses,users,taxclasses will all be discarded in production
+allow_use_of_default: 1
+#use 1 to set up the user authentication mechanisms
+authenticate_user: 0
+#the currency displayed on the screen
+currency: 'KES'
+#stock level indicators
+batch_OK_limit: 70
+batch_mid_limit: 50
+batch_below_limit: 20
+product_OK_limit: 70
+product_mid_limit: 50
+product_below_limit: 30
+allow_delete_non_empty_batch: 0
+allow_delete_product_with_batch: 0
+allow_fractions: 0
+#Restricts the batch to be reduced in the inventory. Should always be set to one
+restrict_active_batch: 1
+#If set to 1 Allows the user to choose an active batch,if 0,the system automatically picks the batch with the earliest expiry date 
+allow_user_choice_batch: 0
+#if set to 1 the system automatically picks the next batch using the expiry date,if 0,the admin has to pick a batch
+automatic_batch_shift: 1
+
+
