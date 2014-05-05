@@ -27,8 +27,8 @@
           <ul class="nav navbar-nav navbar-right">
             <li><%= link_to "Dashboard",:controller=>"dashboard" %></li>
             <li><%= link_to "Settings",:controller=>"settings" %></li>
-            <li><%= link_to @current_user.user_name,user_path(@current_user) %></li>
             <li><%= link_to "Help",:controller=>"help" %></li>
+            <li><%= link_to "logout "+@current_user.user_name,:controller=>"sessions",:action=>"logout" %></li>
           </ul>
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">

@@ -2,9 +2,8 @@
   <div class="panel-heading">Listing batches for product <%=Item.find(@current_item).item_name%></div>
   <div class="panel-body">
 <%=render "layouts/additional_links" %>
-<p><%= link_to 'Post New Batch', new_batch_path %></p>
 <%if @batches.size > 0 %>
-
+<p><%= link_to 'Post New Batch', new_batch_path,:class => 'btn btn-lg btn-default' %></p>
 <table class="table">
   <thead>
   <tr>
@@ -48,8 +47,10 @@
 <%= will_paginate @items, renderer: BootstrapPagination::Rails %>
 <br />
     <% else%>
+      <div class="well well-lg">
     <p>There are no batches for this product</p>
-
+    <p><%= link_to 'Post New Batch', new_batch_path,:class => 'btn btn-lg btn-default' %></p>
+</div>
 <% end %>
 </div>
 </div>

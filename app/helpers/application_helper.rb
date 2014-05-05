@@ -57,7 +57,7 @@ module ApplicationHelper
         return {:r_percent=>remain_percent,:counter=>counter_batches,:total_remaining=>total_remaining,:total=>total_batch_items}
     else
       #code
-      return 0
+      return {:r_percent=>remain_percent,:counter=>counter_batches,:total_remaining=>total_remaining,:total=>total_batch_items}
     end
   end
   def display_batch_level_color(level)
