@@ -4,7 +4,7 @@ class Item < ActiveRecord::Base
 
   before_validation :capitalize_item_name,:default_space_values,:create_selling_price
   after_save :generate_code,:generate_default_batch
-  validates :item_name,:size,:tax_class,:warehouse,:presence=>true
+ # validates :item_name,:size,:tax_class,:warehouse,:presence=>true
   validates_length_of :item_name, :minimum => 3
   validates_numericality_of :adjusted_price,:buying_price,:calculated_selling,:markup
   validate :price_is_sensible
