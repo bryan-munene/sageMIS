@@ -7,7 +7,7 @@
   <% @stock_level = stock_level_detail[:r_percent] %>
   <p>Current stock level: </p>
 <div class="progress progress-striped">
-         <div class="progress-bar <%=display_product_level_color(@stock_level)%>" role="progressbar" aria-valuenow="<%=@stock_level.to_i%>" aria-valuemin="0" aria-valuemax="<%=100.to_i%>" style="width:<%= @stock_level %>%">
+         <div class="progress-bar <%=display_product_level_color(@stock_level.to_i)%>" role="progressbar" aria-valuenow="<%=@stock_level.to_i%>" aria-valuemin="0" aria-valuemax="<%=100.to_i%>" style="width:<%= @stock_level %>%">
 </div>
 </div>
 <span class="text-muted">Number of Batches: <%= stock_level_detail[:counter] %></span>|<span class="text-muted">Total Remaining: <%= stock_level_detail[:total_remaining] %></span>|<span class="text-muted">Total Number of Items: <%= stock_level_detail[:total] %></span></br>
