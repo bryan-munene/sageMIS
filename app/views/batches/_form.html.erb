@@ -30,7 +30,8 @@
   <tr><div class="field">
     <td><%= f.label :expiry_date %><br /></td>
     <td>
-      <input type="text" data-behaviour='datepicker' >
+      <!--input type="text" data-behaviour='datepicker' -->
+      <%= date_select("expiry_date", "expiry_date", order: [:day, :month, :year],:use_short_month)%>
     </td>
   </div> </tr>
   <tr><div class="field">
