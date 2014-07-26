@@ -20,9 +20,9 @@
 /*forms */
 
 table input[type="text"]{
-  padding: 6px;
+  padding:18px;
+  width:50% 
 }
-
 
 /*.footer{
     margin: 10px 0px;
