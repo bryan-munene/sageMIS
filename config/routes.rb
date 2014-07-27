@@ -22,7 +22,6 @@ PharmEngine::Application.routes.draw do
   post "sessions/login"
   post "sessions/password_change"
 
-
   get "sessions/destroy"
 
   get "sessions/request_new"

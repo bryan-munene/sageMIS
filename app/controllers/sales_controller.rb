@@ -41,9 +41,11 @@ class SalesController < ApplicationController
   # POST /sales.json
   def create
     @sale = Sale.new(params[:sale])
-
+    @sale.process_sale(params)
     respond_to do |format|
-      if @sale.save
+      result = @sale.save
+      if result
+        @sale.update_tempsale(@sale.id)
         format.html { redirect_to @sale, notice: 'Sale was successfully created.' }
         format.json { render json: @sale, status: :created, location: @sale }
       else

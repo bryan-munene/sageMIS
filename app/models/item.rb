@@ -64,4 +64,11 @@ class Item < ActiveRecord::Base
       #creates a default batch with zero items
 
   end
+  def self.search(search)
+  if search
+    where('item_name LIKE ?', "%#{search}%")
+  else
+    scoped
+  end
+end
 end

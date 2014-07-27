@@ -1,0 +1,46 @@
+<%if @current_sales && @current_sales.size > 0 %>
+<table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Item Name</th>
+                  <th>Quantity</th>
+                  <th>Unit Price</th>
+                  <th>Items Cost</th>
+                </tr>
+              </thead>
+              
+              <tbody>
+                            <%count = 0%>
+                            <%quantity = 0%>
+                            <%cost = 0%>
+              <% @current_sales.each do |sale_item| %>
+              <% count = count+ 1%>
+              <% quantity = quantity+ sale_item.quantity.to_i%>
+              <% cost = cost+ sale_item.linecost.to_i%>
+  <tr>
+    <td><%= count %></td>
+    <td><%= Item.find(sale_item.item_id).item_name %></td>
+    <td><%= sale_item.quantity.nil?? 0.0 : sale_item.quantity.to_f %></td>
+    <td><%= Item.find(sale_item.item_id).adjusted_price.to_f %></td>
+    <td><%= sale_item.linecost.nil?? 0.0 :sale_item.linecost.to_f  %></td>
+    <td><%= link_to 'Edit', edit_sale_item_path(sale_item) %></td>
+    <td><%= link_to 'Destroy', sale_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+<tr><td></td></tr>
+<tr>
+              <td>TOTALS</td>
+              <td></td>
+              <td><%=quantity%></td>
+              <td></td>
+              <td><%=cost.to_f%></td>
+</tr>
+              </tbody>
+</table>
+<% else %>
+<p>No Sale Items</p>
+<% end%>
+<div class="panel-body">
+    <%=render 'sale_total'%>
+</div>

@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   # GET /items.json
   def index
     #@items = Item.all
+   
     @items = Item.paginate(:page => params[:page], :per_page => 15)
     respond_to do |format|
       format.html # index.html.erb

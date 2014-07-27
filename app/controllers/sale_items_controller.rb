@@ -2,8 +2,14 @@ class SaleItemsController < ApplicationController
   # GET /sale_items
   # GET /sale_items.json
   def index
-    @sale_items = SaleItem.all
-
+    #@sale_items = SaleItem.all
+    if params[:search]
+     @sale_items = Item.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 15, :page => params[:page])
+    Rails.logger.debug "#{@sale_items.inspect}"
+    else
+      @sale_items = SaleItem.all
+    end
+    Rails.logger.debug "#{@sale_items.inspect}"
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @sale_items }
@@ -25,7 +31,8 @@ class SaleItemsController < ApplicationController
   # GET /sale_items/new.json
   def new
     @sale_item = SaleItem.new
-
+    @current_sales = SaleItem.in_progress
+    Rails.logger.debug "#{@current_sales.inspect}"
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @sale_item }
@@ -41,10 +48,11 @@ class SaleItemsController < ApplicationController
   # POST /sale_items.json
   def create
     @sale_item = SaleItem.new(params[:sale_item])
+    @sale_item.newitem(params[:sale_item])
 
     respond_to do |format|
       if @sale_item.save
-        format.html { redirect_to @sale_item, notice: 'Sale item was successfully created.' }
+        format.html { redirect_to new_sale_item_path, notice: 'Sale item was successfully posted.' }
         format.json { render json: @sale_item, status: :created, location: @sale_item }
       else
         format.html { render action: "new" }

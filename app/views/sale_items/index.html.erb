@@ -1,27 +1,7 @@
-<h1>Listing sale_items</h1>
-
-<table>
-  <tr>
-    <th>Item</th>
-    <th>Sale</th>
-    <th>Batch</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @sale_items.each do |sale_item| %>
-  <tr>
-    <td><%= sale_item.item_id %></td>
-    <td><%= sale_item.sale_id %></td>
-    <td><%= sale_item.batch_id %></td>
-    <td><%= link_to 'Show', sale_item %></td>
-    <td><%= link_to 'Edit', edit_sale_item_path(sale_item) %></td>
-    <td><%= link_to 'Destroy', sale_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<%= form_tag items_path, :method => 'get', :id => "items_search" do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+  <div id="items"><%= render 'items' %></div>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Sale item', new_sale_item_path %>

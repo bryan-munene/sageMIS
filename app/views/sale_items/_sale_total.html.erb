@@ -1,0 +1,17 @@
+<table><tbody>
+  <tr>
+    <td><%= "Total Amount" %></td>
+    <td><%=0.00%> </td>
+  </tr>
+  <tr>
+    <td><%= "Total Discounts" %></td>
+    <td><%= 0.00 %></td>
+    </tr>
+  <tr>
+    <td>
+    <%= form_tag sales_path, :method => 'post', :id => "sale" do %> 
+    <%= submit_tag "Confirm Sale", :name => nil %>
+  </td>
+<% end %>
+  </tr>
+  </table>
