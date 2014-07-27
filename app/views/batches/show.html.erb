@@ -1,3 +1,7 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Showing batch for product <%=Item.find(@current_item).item_name%></div>
+  <div class="panel-body">
+
 <%=render "layouts/additional_links" %>
 <p>
   <b>Name:</b>
@@ -10,15 +14,13 @@
 </p>
 
 <p>
-  <b>Date:</b>
-  <%= @batch.date %>
+  <b>Expiry Date:</b>
+  <%= presentable_date(@batch.expiry_date) %>
 </p>
 
 <p>
   <b>No of items:</b>
   <%= @batch.no_of_items %>
 </p>
-
-
-<%= link_to 'Edit', edit_batch_path(@batch) %> |
-<%= link_to 'Back', batches_path %>
+</div>
+</div>

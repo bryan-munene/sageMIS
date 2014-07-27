@@ -32,6 +32,7 @@ PharmEngine::Application.routes.draw do
   #Needs to be made cleaner
   get "items/import_spreadsheet"
   get "items/edit"
+  get "items/show"
   get "settings/index"
   get "help/index"
   get "reports/index"

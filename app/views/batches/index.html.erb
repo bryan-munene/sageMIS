@@ -22,11 +22,11 @@
     <strong><%= batch.name %></strong></br>
     <span class="text-muted"><%= batch.description %></span></br>
     <span class="text-muted">created:<%= batch.created_at.nil? ? ("unknown") : (time_ago_in_words(batch.created_at) +" ago")%></span></br>
-    <span class="text-muted">by:<%= batch.creator.nil? ? ("unknown") : (batch.creator)%></span>
+    <span class="text-muted">by:<%= batch.creator.nil? ? ("unknown") : User.find(batch.creator).user_name%></span>
   </div>
     </td>
     
-    <td><strong></strong><%= presentable_date(batch.date) %></strong></td>
+    <td><strong></strong><%= presentable_date(batch.expiry_date) %></strong></td>
     <td>
       <div class="progress progress-striped">
         <% @batch_level = batch_display(batch.remaining_items.to_f,batch.no_of_items.to_f) %>

@@ -54,7 +54,9 @@
         <%= hidden_field_tag 'calculated_selling', 0 %><br />
         <%= hidden_field_tag 'adjusted_price', 0 %><br />
         <%= hidden_field_tag 'custom_size', 0 %><br />
-        <%= hidden_field_tag 'custom_attribute', 0 %><br /> </td>
+        <%= hidden_field_tag 'custom_attribute', 0 %><br />
+        <%=f.hidden_field :creator, :value=>@current_user.id.to_i %>
+    </td>
   </div>
 <% end %></tr>
        </table>

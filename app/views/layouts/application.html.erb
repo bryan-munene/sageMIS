@@ -48,7 +48,7 @@
           <ul class="nav nav-sidebar">
             <li class="disabled"><a href="">Quick Actions</a></li>
             <li class="<%= "active" if controller.controller_name.to_s.eql?"items" and controller.action_name.to_s.eql?"new"  %>" ><%= link_to "Add Product",:controller=>"items",:action=>"new" %></li>
-            <li class="<%= "active" if controller.controller_name.to_s.eql?"sales"and controller.action_name.to_s.eql?"new"%>"  ><%= link_to "Add Sale",:controller=>"sales",:action=>"new" %></li>
+            <li class="<%= "active" if controller.controller_name.to_s.eql?"sales"and controller.action_name.to_s.eql?"new"%>"  ><%= link_to "Add Sale",:controller=>"sale_items",:action=>"new" %></li>
             <li class="<%= "active" if controller.controller_name.to_s.eql?"batches"and controller.action_name.to_s.eql?"new"%>" ><%= link_to "Add Batch",:controller=>"batches",:action=>"new" %></li>
           </ul>
           <ul class="nav nav-sidebar">

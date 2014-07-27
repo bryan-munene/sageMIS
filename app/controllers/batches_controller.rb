@@ -13,6 +13,8 @@ class BatchesController < ApplicationController
   # GET /batches/1
   # GET /batches/1.json
   def show
+    #Pick the item of choice before showing the batch created
+    current_item
     @batch = Batch.find(params[:id])
 
     respond_to do |format|
@@ -35,6 +37,7 @@ class BatchesController < ApplicationController
 
   # GET /batches/1/edit
   def edit
+    current_item
     @batch = Batch.find(params[:id])
   end
 
@@ -62,7 +65,6 @@ class BatchesController < ApplicationController
   # PUT /batches/1.json
   def update
     @batch = Batch.find(params[:id])
-
     respond_to do |format|
       if @batch.update_attributes(params[:batch])
         format.html { redirect_to @batch, notice: 'Batch was successfully updated.' }

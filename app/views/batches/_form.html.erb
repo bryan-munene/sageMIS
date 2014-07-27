@@ -31,15 +31,16 @@
     <td><%= f.label :expiry_date %><br /></td>
     <td>
       <!--input type="text" data-behaviour='datepicker' -->
-      <%= date_select("expiry_date", "expiry_date", :start_year => Time.now.year)%>
+      <%= f.date_select :expiry_date, :start_year => Time.now.year, order: [:day, :month, :year]%>
     </td>
   </div> </tr>
   <tr><div class="field">
     <td><%= f.label :no_of_items %><br /> </td>
-    <td> <%= f.number_field :no_of_items %></td>
+    <td> <%= f.text_field :no_of_items %></td>
   </div></tr>
   <tr><div class="actions">
     <td></td><td><%= f.submit "Add Batch", :class=>"btn btn-default"%></td>
+    <%=f.hidden_field :creator, :value=>@current_user.id.to_i %>
   </div>
 <% end %>
   </tr>
