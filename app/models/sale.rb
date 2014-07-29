@@ -28,7 +28,7 @@ class Sale < ActiveRecord::Base
   end
   def update_tempsale(sale_id)
     
-    SaleItem.update_all( "sale_id = #{sale_id}", "sale_id = '2147483647'" )
+    SaleItem.update_all( "sale_id = #{sale_id}", "sale_id = '9999999999'" )
     #Log the batch size
     Rails.logger.debug "#{@items_to_update.inspect}"
     for sale in @items_to_update
