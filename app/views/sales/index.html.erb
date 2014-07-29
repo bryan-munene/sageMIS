@@ -16,8 +16,8 @@
 <tbody>
 <% @sales.each do |sale| %>
   <tr>
-    <td><%= sale.value %></td>
-    <td><%= sale.float %></td>
+    <td><%= sale.valueofsale %></td>
+    <td><%= sale.discountamount %></td>
     <td><%= sale.number_of_items %></td>
     <td><%= sale.user %></td>
     <td><%= sale.mode_of_payment %></td>
@@ -30,6 +30,6 @@
 
 <br />
 
-<%= link_to 'New Sale', new_sale_path,:class => 'btn btn-primary' %>
+<%= link_to 'New Sale', new_sale_item_path,:class => 'btn btn-primary' %>
 </div>
 </div>
