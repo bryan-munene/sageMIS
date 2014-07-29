@@ -22,7 +22,8 @@ class SaleItem < ActiveRecord::Base
   end
   def self.in_progress
     #Obtains all the sale items in progress
-    where("sale_id = ?",2147483647)
+    #where("sale_id = ?",2147483647)
+    where("sale_id = ?",9999999999)
   end
   
 end
