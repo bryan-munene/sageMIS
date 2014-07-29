@@ -118,6 +118,7 @@ class ItemsController < ApplicationController
         file = uploaded_io.tempfile
         #infile = params[:file].read
         count = 0
+        failed_count = 0
         CSV.foreach(file) do |row|
           # use row here...
           count = count + 1
@@ -135,16 +136,22 @@ class ItemsController < ApplicationController
           if count==1
             #ignore this row as it is the header row
           else
-            item = {:old_item_number=>old_item_number,:cvs_import=>is_import,:item_name=>name,:item_description=>description,:item_attribute=>attribute,:size=>size,:original_price=>regular_price,:dosage=>dosage,:manufacturer=>manufacturer,:source=>source}
+            item = {:old_item_number=>old_item_number,:cvs_import=>is_import,:item_name=>name,:item_description=>description,:item_attribute=>attribute,:size=>size,:original_price=>regular_price,:dosage=>dosage,:manufacturer=>manufacturer,:source=>source,:buying_price=>0}
             @item = Item.new(item)
             if !@item.save
               Rails.logger.error{"Failed Creating the item"}
-              Rails.logger.error{@item}
+              Rails.logger.error{@item.errors.inspect}
+              failed_count = failed_count + 1
+            else
+              Rails.logger.error{"Uploading the item"}
             end
           end
         end
-
-        flash[:notice]="Successfully imported #{count-1} records"
+        if failed_count > 0
+          flash[:warning]="Failed importing #{failed_count-1} records"
+        else
+          flash[:notice]="Successfully imported #{count-1} records"
+        end
         redirect_to items_path and return
       else
         #display the import form

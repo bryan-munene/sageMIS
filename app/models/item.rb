@@ -14,14 +14,14 @@ class Item < ActiveRecord::Base
 
   def price_is_sensible
     #miscellaneous price checks here
-    if self.buying_price == 0  and self.markup==0
-      errors.add("Buying Price","cannot be zero")
+    if self.buying_price.to_f < 0  and self.markup.to_f < 0
+      errors.add("Buying Price","cannot be less than zero")
     end
 
   end
   def mark_up_is_sensible
-    if self.markup.to_f == 0
-      errors.add("Markup","is not numeric")
+    if self.markup.to_f < 0
+      errors.add("Markup","is less than zero")
     end
   end
   

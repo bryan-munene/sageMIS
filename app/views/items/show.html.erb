@@ -44,7 +44,7 @@
 
 <p>
   <b>Source:</b>
-  <%= @item.source %>
+  <%= @item.source.to_s =="" ? @item.manufacturer : @item.source%>
 </p>
 
 <p>
