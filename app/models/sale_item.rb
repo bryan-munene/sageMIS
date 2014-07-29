@@ -16,8 +16,8 @@ class SaleItem < ActiveRecord::Base
     
     self.item_id = @item.id
     self.sale_id = 9999999999.to_i
-    self.quantity = quantity.to_f
-    self.linecost = linecost.to_f
+    self.quantity = quantity.to_f.round(2)
+    self.linecost = linecost.to_f.round(2)
   end
   end
   def self.in_progress

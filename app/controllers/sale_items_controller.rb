@@ -84,7 +84,7 @@ class SaleItemsController < ApplicationController
     @sale_item.destroy
 
     respond_to do |format|
-      format.html { redirect_to sale_items_url }
+      format.html { redirect_to new_sale_item_path }
       format.json { head :no_content }
     end
   end
