@@ -34,6 +34,10 @@
     <td><%= f.label :markup %><br /></td>
     <td><%= f.text_field :markup %></td>
   </div></tr>
+    <tr> <div class="field">
+    <td><%= f.label :final_selling_price %><br /></td>
+    <td><%= f.text_field :adjusted_price %></td>
+  </div></tr>
   <tr><div class="field">
     <td><%= f.label :source %><br /></td>
     <td><%= f.text_field :source %></td>
@@ -52,7 +56,6 @@
     <td><%= f.submit "Add Product", :class=>"btn btn-default"%></td>
     <td><%= hidden_field_tag 'item_code', '' %><br />
         <%= hidden_field_tag 'calculated_selling', 0 %><br />
-        <%= hidden_field_tag 'adjusted_price', 0 %><br />
         <%= hidden_field_tag 'custom_size', 0 %><br />
         <%= hidden_field_tag 'custom_attribute', 0 %><br />
         <%=f.hidden_field :creator, :value=>@current_user.id.to_i %>

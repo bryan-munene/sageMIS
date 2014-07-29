@@ -37,6 +37,10 @@
   <b>Buying price:</b>
   <%= Settings.currency.to_s+" "+@item.buying_price.to_s %>
 </p>
+<p>
+  <b>Selling price:</b>
+  <%= Settings.currency.to_s+" "+@item.adjusted_price.to_s %>
+</p>
 
 <p>
   <b>Source:</b>
@@ -61,11 +65,6 @@
 <p>
   <b>Calculated selling:</b>
   <%= Settings.currency.to_s+" "+@item.calculated_selling.to_s %>
-</p>
-
-<p>
-  <b>Adjusted price:</b>
-  <%= Settings.currency.to_s+" "+@item.adjusted_price.to_s %>
 </p>
 </div>
   </div>
