@@ -59,7 +59,7 @@
 
 <p>
   <b>Markup:</b>
-  <%= @item.markup.to_s + "%".to_s%>
+  <%= Settings.currency.to_s+" "+@item.markup.to_s + "".to_s%>
 </p>
 
 <p>

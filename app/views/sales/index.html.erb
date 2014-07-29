@@ -5,7 +5,7 @@
   <thead>
     <tr>
     <th>Value</th>
-    <th>Float</th>
+    <th>Discount</th>
     <th>Number of items</th>
     <th>User</th>
     <th>Mode of payment</th>
@@ -16,7 +16,7 @@
 <tbody>
 <% @sales.each do |sale| %>
   <tr>
-    <td><%= sale.valueofsale %></td>
+    <td><%= link_to sale.valueofsale ,sale %></td>
     <td><%= sale.discountamount %></td>
     <td><%= sale.number_of_items %></td>
     <td><%= sale.user %></td>

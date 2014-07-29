@@ -35,7 +35,6 @@ class ItemsController < ApplicationController
     else
 
       @item = Item.new
-
       respond_to do |format|
         format.html # new.html.erb
         format.json { render json: @item }
@@ -64,7 +63,7 @@ class ItemsController < ApplicationController
     @item.warehouse = params[:warehouse]
     @item.item_attribute = params[:item_attribute]
     @item.calculated_selling = params[:calculated_selling]
-    @item.adjusted_price = params[:adjusted_price]
+    #@item.adjusted_price = params[:adjusted_price]
     respond_to do |format|
       if @item.save
         format.html { redirect_to @item, item: 'Item was successfully created.' }

@@ -13,15 +13,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap.min
-//= require bootstrap-datepicker
 //= require_tree .
-$(function() {
-  $("#items").delegate("th", "a", "#products",".pagination", "a","click", function() {
-    $.getScript(this.href);
-    return false;
-  });
-  $("#items_search input").keyup(function() {
-    $.get($("#items_search").attr("action"), $("#items_search").serialize(), null, "script");
-    return false;
-  });
-});

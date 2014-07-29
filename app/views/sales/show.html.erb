@@ -1,33 +1,70 @@
-<p>
-  <b>Value:</b>
-  <%= @sale.valueofsale %>
-</p>
+<div class="panel panel-default">
+ <div class="panel-heading">Sale Details</div>
+  <div class="panel-body">
+<% if @saleitems && @saleitems.size>0 %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+    <th>#</th>
+    <th>Item Name</th>
+    <th>Quantity</th>
+    <th>Line Cost</th>
+  </tr>
+  </thead>
+ <tbody>
+  <% count = 0%>
+<% @saleitems.each do |item| %>
+  <tr>
+    <% count =count + 1%>
+    <td><%= count %></td>
+    <td><%= Item.find(item.item_id).item_name %></td>
+    <td><%= item.quantity %></td>
+    <td><%= item.linecost %></td>
+  </tr>
+<% end %>
+ </tbody>
+</table>
+<div>
+</div>
+<table>
+  <tbody>
+<tr>
+  <td>Number of items:</td>
+  <td><%= @sale.number_of_items %></td>
+</tr>
+<tr>
+  <td>Value:</td>
+  <td><%= @sale.valueofsale %></td>
+</tr>
 
-<p>
-  <b>Discount:</b>
-  <%= @sale.discountamount %>
-</p>
+<tr>
+  <td>Discount:</td>
+  <td><%= @sale.discountamount %></td>
+</tr>
+<tr>
+  <td>Mode of payment:</td>
+  <td><%= @sale.mode_of_payment.to_i ==1 ? " CASH " :" OTHER " %></td>
+</tr>
+<tr>
+  <td>Till no:</b>
+  <td><%= @sale.till_no.to_i==0 ?  " N/A ".to_s : @sale.till_no.to_s %></td>
+</tr>
+<tr>
+  <td>Served by :</td>
+  <td><%= @sale.user.to_i==0?  " N/A ".to_s : @sale.till_no.to_s %></td>
+</tr>
 
-<p>
-  <b>Number of items:</b>
-  <%= @sale.number_of_items %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @sale.user %>
-</p>
-
-<p>
-  <b>Mode of payment:</b>
-  <%= @sale.mode_of_payment %>
-</p>
-
-<p>
-  <b>Till no:</b>
-  <%= @sale.till_no %>
-</p>
-
-
-<%= link_to 'Edit', edit_sale_path(@sale) %> |
-<%= link_to 'Back', sales_path %>
+</tbody>
+</table>
+<div>
+  <%= link_to 'New Sale', new_sale_item_path,:class => 'btn btn-lg btn-primary' %><%= link_to 'Back', sales_path,:class => 'btn btn-lg btn-primary' %>
+</div>
+<%else%>
+<div>
+<p>No sale items</>
+<%= link_to 'New Sale', new_sale_item_path,:class => 'btn btn-lg btn-primary' %>
+</div>
+<% end %>
+  </div>
+</div>
+</div>

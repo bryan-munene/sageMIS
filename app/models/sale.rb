@@ -53,4 +53,8 @@ class Sale < ActiveRecord::Base
       Batch.update_all("remaining_items = #{amount_update}","id = #{@batches.first.id}")
     end 
   end
+  def self.details(itemid)
+    #code
+    SaleItem.find(:all, :conditions => [ "sale_id = ?", itemid])
+  end
 end

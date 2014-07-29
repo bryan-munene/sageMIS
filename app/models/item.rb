@@ -1,9 +1,10 @@
 class Item < ActiveRecord::Base
   include Codegen
-  attr_accessible :adjusted_price, :buying_price, :calculated_selling, :custom_attribute, :custom_size, :item_attribute, :item_code, :item_name, :markup, :size, :source, :tax_class, :warehouse,:item_description,:dosage,:manufacturer,:original_price,:cvs_import,:old_item_number,:creator
+  attr_accessible  :buying_price, :calculated_selling,:adjusted_price, :custom_attribute, :custom_size, :item_attribute, :item_code, :item_name, :markup, :size, :source, :tax_class, :warehouse,:item_description,:dosage,:manufacturer,:original_price,:cvs_import,:old_item_number,:creator
   before_validation :capitalize_item_name,:default_space_values,:create_markup,:create_selling_price
   after_save :generate_code,:generate_default_batch
  # validates :item_name,:size,:tax_class,:warehouse,:presence=>true
+  validates :adjusted_price ,:presence=>true
   validates_length_of :item_name, :minimum => 3
   validates_numericality_of :adjusted_price,:buying_price,:calculated_selling
   validate :price_is_sensible

@@ -37,5 +37,6 @@
   </div>
   <div class="actions">
     <%= f.submit %>
+    <%=f.hidden_field :creator, :value=>@current_user.id.to_i %>
   </div>
 <% end %>

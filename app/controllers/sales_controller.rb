@@ -14,7 +14,8 @@ class SalesController < ApplicationController
   # GET /sales/1.json
   def show
     @sale = Sale.find(params[:id])
-
+    @saleitems = Sale.details(params[:id])
+    #Rails.logger.debug "#{@sale_}"
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @sale }
