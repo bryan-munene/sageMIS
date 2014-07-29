@@ -32,6 +32,8 @@ PharmEngine::Application.routes.draw do
   get "items/import_spreadsheet"
   get "items/edit"
   get "items/show"
+  get "items/searchb"
+  post "items/searchb"
   get "settings/index"
   get "help/index"
   get "reports/index"

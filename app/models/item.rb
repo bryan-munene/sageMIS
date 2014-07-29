@@ -97,5 +97,9 @@ class Item < ActiveRecord::Base
   else
     scoped
   end
-end
+  end
+  def self.searchb(search_key)
+      like= "%".concat(search_key.concat("%"))
+      where("item_name LIKE ?", like)
+  end
 end

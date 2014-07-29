@@ -3,18 +3,39 @@ class ItemsController < ApplicationController
   # GET /items.json
   def index
     #@items = Item.all
-   
     @items = Item.paginate(:page => params[:page], :per_page => 15)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @items }
     end
   end
-
+  def searchb
+    #@items = Item.all
+    if request.post?
+    q = params[:search]
+    if q.to_s.length > 0
+      
+   @items = Item.searchb(q)
+     #code
+     Rails.logger.debug"#{@items.inspect}"
+    #@items = Item.paginate(:page => params[:page], :per_page => 15)
+  end 
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @items }
+    end
+    end
+  end
   # GET /items/1
   # GET /items/1.json
   def show
     item_id = params[:id]
+    if item_id = "searchb"
+      #code
+      render :action=>'searchb'
+    else
+    
+    
     @item = Item.find(item_id)
     #store the current item in the session
     session[:item_id] = @item.id
@@ -22,6 +43,7 @@ class ItemsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @item }
+    end
     end
   end
 
