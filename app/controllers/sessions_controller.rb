@@ -46,7 +46,7 @@ before_filter :login_required,:only=>['password_change']
       #render :layout=> false
     end
     end
-  #  render :layout=> false
+    render :layout=> false
   end
 
   def logout
