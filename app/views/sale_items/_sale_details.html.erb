@@ -11,13 +11,13 @@
               </thead>
               
               <tbody>
-                            <%count = 0%>
-                            <%quantity = 0%>
-                            <%cost = 0%>
+                            <%count = 0.0%>
+                            <%quantity = 0.0%>
+                            <%cost = 0.0%>
               <% @current_sales.each do |sale_item| %>
               <% count = count+ 1%>
-              <% quantity = quantity+ sale_item.quantity.to_i%>
-              <% cost = cost+ sale_item.linecost.to_i%>
+              <% quantity = quantity+ sale_item.quantity.to_f%>
+              <% cost = cost+ sale_item.linecost.to_f%>
   <tr>
     <td><%= count %></td>
     <td><%= Item.find(sale_item.item_id).item_name %></td>
@@ -32,7 +32,7 @@
 <tr>
               <td>TOTALS</td>
               <td></td>
-              <td><%=quantity%></td>
+              <td><%=quantity.to_f%></td>
               <td></td>
               <td><%=cost.to_f%></td>
 </tr>

@@ -32,7 +32,7 @@ class SaleItemsController < ApplicationController
   def new
     @sale_item = SaleItem.new
     @current_sales = SaleItem.in_progress
-    Rails.logger.debug "#{@current_sales.inspect}"
+    #Rails.logger.debug "#{@current_sales.inspect}"
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @sale_item }

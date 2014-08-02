@@ -30,16 +30,16 @@
   <tbody>
 <tr>
   <td>Number of items:</td>
-  <td><%= @sale.number_of_items %></td>
+  <td><%= @sale.number_of_items.to_f %></td>
 </tr>
 <tr>
   <td>Value:</td>
-  <td><%= @sale.valueofsale %></td>
+  <td><%= @sale.valueofsale.to_f %></td>
 </tr>
 
 <tr>
   <td>Discount:</td>
-  <td><%= @sale.discountamount %></td>
+  <td><%= @sale.discountamount.to_f %></td>
 </tr>
 <tr>
   <td>Mode of payment:</td>

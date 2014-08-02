@@ -6,10 +6,10 @@
 <tr><td><%= form_for(@sale_item) do |f| %>
   <% if @sale_item.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@sale_item.errors.count, "error") %> prohibited this sale_item from being saved:</h2>
+      <h4><%= pluralize(@sale_item.errors.count, "error") %> prohibited this sale_item from being saved:</h4>
       <ul>
       <% @sale_item.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <li class="list-group-item list-group-item-danger"><%= msg %></li>
       <% end %>
       </ul>
     </div>

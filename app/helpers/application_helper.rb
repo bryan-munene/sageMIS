@@ -38,6 +38,7 @@ module ApplicationHelper
      return ((remaining/original)*100).to_i
     end
   end
+  
   def stock_display(item_id)
     @batches = Batch.find_all_by_item_id(item_id)
     total_batch_items = 0.0

@@ -1,11 +1,10 @@
-<%= form_tag "/items/searchb", :method => 'post', :id => "items_search" do %>
+<%= form_tag "/search/search", :method => 'post', :id => "items_search" do %>
   <p>
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Search", :name => nil %>
   </p>
 <% end %>
 <% if @items && @items.size > 0%>
-<h5>Products Matching your search query</h5>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -35,5 +34,9 @@
  </tbody>
 </table>
 <%else%>
-  <h3>Products Matching your search query will appear here</h3>
+  <% if @msg%>
+  <h5><%= @msg%></h5>
+  <%else%>
+  <h5>Products Matching your search query will appear here</h5>
+<%end%>
 <% end%>
