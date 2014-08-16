@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>autocomplete demo</title>
+</head>
+<body>
+ 
+<label for="autocomplete">Select a programming language: </label>
+<input id="autocomplete", name="search">
+ 
+<script>
+$( "#autocomplete" ).autocomplete({
+  source: '/search/autocompletetest2'
+});
+</script>
+ 
+</body>
+</html>

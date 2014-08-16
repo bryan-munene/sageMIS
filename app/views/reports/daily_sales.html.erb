@@ -1,0 +1,60 @@
+<div class="panel panel-default">
+ <div class="panel-heading">Sales Report </div>
+  <div class="panel-body">
+    <table>
+<%= form_tag "/reports/daily_sales", :method => 'post', :id => "items_search" do %>
+  <tr><td><div>
+    <p>Select Date Ranges for the Sales Report.</p></div>
+   </td> </tr>
+  <tr>
+    <td><%= label_tag 'From Date :' %><%= date_select("report_date_from","")%></td>
+    </tr>
+  <tr>
+    <td><%= label_tag 'To Date :' %><%= date_select("report_date_to","") %></td>
+    </tr>
+  <tr>
+   <td> <%= submit_tag "Get Report", :name => nil,:class=>"btn btn-default" %></td>
+    </tr>
+<% end %>
+</table>
+<% if @dailysales%>
+<% if  @dailysales.size == 0%>
+  <div class="panel-body">
+    <div>
+    <p>No Sales match your criteria.</p>
+</div>
+ <% else %>
+  <div class="panel-body">
+    <table class="table table-striped">
+  <thead>
+    <tr>
+    <th>Value</th>
+    <th>Discount</th>
+    <th>Number of items</th>
+    <th>User</th>
+    <th>Mode of payment</th>
+    <th>Till no</th>
+    <th></th>
+    </tr>
+  </thead>
+<tbody>
+<% @dailysales.each do |sale| %>
+  <tr>
+    <td><%= link_to sale.valueofsale ,sale %></td>
+    <td><%= sale.discountamount %></td>
+    <td><%= sale.number_of_items %></td>
+    <td><%= sale.user %></td>
+    <td><%= sale.mode_of_payment %></td>
+    <td><%= sale.till_no %></td>
+    <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  </tbody>
+<% end %>
+</table>
+
+</div>
+  <%end%>
+<% end%>
+</div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<table><tbody>
+  
+  <tr>
+    <td>
+    <%= form_tag sales_path, :method => 'post', :id => "sale" do %>
+    <%= label_tag :discount_amount%></td>
+    <td>
+    <%= text_field_tag :discount,""%>
+    </td>
+    <td>
+    <%= submit_tag "Confirm Sale",:class=>"btn btn-default" %>
+  </td>
+<% end %>
+  </tr>
+  </table>

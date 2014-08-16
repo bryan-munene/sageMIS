@@ -1,16 +1,25 @@
 <table><tbody>
   <tr>
-    <td><%= "Total Amount" %></td>
-    <td><%=0.00%> </td>
-  </tr>
-  <tr>
-    <td><%= "Total Discounts" %></td>
-    <td><%= 0.00 %></td>
-    </tr>
-  <tr>
     <td>
-    <%= form_tag sales_path, :method => 'post', :id => "sale" do %> 
-    <%= submit_tag "Confirm Sale", :name => nil %>
+    <%= form_for(@sale) do |f| %>
+  <% if @saleserrors.any? %>
+    <div id="error_explanation">
+      <h5><%= pluralize(@saleserrors.count, "error") %> prohibited this sale from being saved:</h5>
+
+      <ul>
+      <% @saleserrors.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  </tr><tr><td>
+    <%= label_tag :discount_amount%></td>
+    <td>
+    <%= text_field_tag :discount,""%>
+    </td>
+    <td>
+    <%= submit_tag "Confirm Sale",:class=>"btn btn-default" %>
   </td>
 <% end %>
   </tr>

@@ -42,6 +42,7 @@ class SalesController < ApplicationController
   # POST /sales.json
   def create
     @sale = Sale.new(params[:sale])
+    @sale.discountamount = params[:discount]
     @sale.process_sale(params)
     respond_to do |format|
       result = @sale.save
@@ -50,7 +51,7 @@ class SalesController < ApplicationController
         format.html { redirect_to @sale, notice: 'Sale was successfully created.' }
         format.json { render json: @sale, status: :created, location: @sale }
       else
-        format.html { render action: "new" }
+        format.html { redirect_to :controller =>'sale_items',:action=>'new', error: @sale.errors.to_a }
         format.json { render json: @sale.errors, status: :unprocessable_entity }
       end
     end

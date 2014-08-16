@@ -30,8 +30,15 @@ class SaleItemsController < ApplicationController
   # GET /sale_items/new
   # GET /sale_items/new.json
   def new
+    
     @sale_item = SaleItem.new
     @current_sales = SaleItem.in_progress
+    @sale = Sale.new
+    @saleserros = []
+    if params[:error]
+      #add these errors to the current sales form
+      @saleserrors = params[:error]
+    end
     #Rails.logger.debug "#{@current_sales.inspect}"
     respond_to do |format|
       format.html # new.html.erb

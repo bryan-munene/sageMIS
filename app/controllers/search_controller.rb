@@ -1,4 +1,4 @@
-class SearchController < ApplicationController
+class SearchController < ApplicationController 
   def search
     #search for a product
     if request.post?
@@ -17,4 +17,15 @@ class SearchController < ApplicationController
       end
     
   end
+  def autocompletetest
+    
+  end
+  def autocompletetest2
+    tags = Item.select([:item_name]).where("item_name LIKE ?", "%#{params[:search]}%")
+    result = tags.collect do |t|
+      { value: t.item_name }
+    end
+    render json: result
+  end
+  
 end

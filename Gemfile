@@ -29,6 +29,8 @@ group :development do
 end
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'rails3-jquery-autocomplete'
 gem 'bootstrap-sass', '2.1'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

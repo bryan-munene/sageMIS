@@ -4,8 +4,8 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <title>Sage MIS</title>
-  <%= stylesheet_link_tag    "application","dashboard", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag    "application","dashboard",'jquery-ui' ,:media => "all" %>
+  <%= javascript_include_tag "application","jquery","jquery-ui" %>
   <%= csrf_meta_tags %>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -54,7 +54,7 @@
           <ul class="nav nav-sidebar">
             <li class="disabled"><a href="">Quick Reports</a></li>
             <li class="<%= "active" if controller.controller_name.to_s.eql?"items" and controller.action_name.to_s.eql?"search"  %>" ><%= link_to "Quick Search",:controller=>"search",:action=>"search" %></li>
-            <li><a href="">Daily Sales Report</a></li>
+            <li class="<%= "active" if controller.controller_name.to_s.eql?"reports" and controller.action_name.to_s.eql?"daily_sales"  %>" ><%= link_to "Sales Reports",:controller=>"reports",:action=>"daily_sales" %></li>
           </ul>
         </div>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
