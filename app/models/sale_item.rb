@@ -58,7 +58,7 @@ class SaleItem < ActiveRecord::Base
     remainder = stock_level_detail[:total_remaining] - stck
     #check the total remaining items in the batches are greater than quantity
     Rails.logger.debug "#{remainder}"
-    if self.quantity > remainder
+    if self.quantity.to_f > remainder
       #code
       errors.add("quantity","The quantity #{self.quantity} is greater than the remaining number #{remainder}")
     end
