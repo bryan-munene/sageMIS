@@ -34,7 +34,7 @@ class SaleItemsController < ApplicationController
     @sale_item = SaleItem.new
     @current_sales = SaleItem.in_progress
     @sale = Sale.new
-    @saleserros = []
+    @saleserrors = []
     if params[:error]
       #add these errors to the current sales form
       @saleserrors = params[:error]

@@ -1,20 +1,7 @@
 PharmEngine::Application.routes.draw do
 
-  resources :sale_items
-
-
-  resources :sales
-
-
-  resources :itemattributes
-
-
-  resources :items
-
-
-  resources :item_attribute_details
-
-
+  get 'search/autocomplete_item_name'
+  get 'search/autocompletetest'
   get "dashboard/index"
   get "sessions/index"
   get "sessions/login"
@@ -38,6 +25,26 @@ PharmEngine::Application.routes.draw do
   get "help/index"
   get "reports/index"
   post "items/import_spreadsheet"
+  
+  #reports section
+  get "reports/daily_sales"
+  post "reports/daily_sales"
+  #get "reports/daily_sales"
+  #get "reports/daily_sales"
+
+  resources :sale_items
+
+
+  resources :sales
+
+
+  resources :itemattributes
+
+
+  resources :items 
+
+
+  resources :item_attribute_details
 
   resources :users
 
