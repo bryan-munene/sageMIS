@@ -3,6 +3,7 @@ PharmEngine::Application.routes.draw do
   get 'search/autocomplete_item_name'
   get 'search/autocompletetest'
   get "dashboard/index"
+  get "reports/daily_sales"
   get "sessions/index"
   get "sessions/login"
   get "sessions/logout"

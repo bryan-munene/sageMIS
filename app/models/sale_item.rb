@@ -69,6 +69,7 @@
     else
       errors.add("item_id","Item cannot be empty")
     end
+
     end
     def current_sale_stock_display(sale_id,item_id)
       total_cumulated = 0.0
