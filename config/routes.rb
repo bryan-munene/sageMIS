@@ -16,6 +16,7 @@ PharmEngine::Application.routes.draw do
 
 
   get "dashboard/index"
+  get "reports/daily_sales"
   get "sessions/index"
   get "sessions/login"
   get "sessions/logout"
