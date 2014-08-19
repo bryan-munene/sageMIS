@@ -2,7 +2,7 @@
   <tr>
     <td>
     <%= form_for(@sale) do |f| %>
-  <% if @saleserrors.size > 0 %>
+  <% if @saleserrors.size.to_i > 0 %>
     <div id="error_explanation">
       <h5><%= pluralize(@saleserrors.count, "error") %> prohibited this sale from being saved:</h5>
 
