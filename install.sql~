@@ -1,4 +1,3 @@
-
 CREATE DATABASE pharm_engine_test CHARACTER SET utf8 COLLATE utf8_general_ci;
 CREATE DATABASE pharm_engine_development CHARACTER SET utf8 COLLATE utf8_general_ci;
 CREATE DATABASE pharm_engine_production CHARACTER SET utf8 COLLATE utf8_general_ci;

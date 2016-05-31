@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
     # validates_length_of :password, :within => 5..40
   validates_presence_of :user_name, :email,:first_name,:last_name
   validates_uniqueness_of :user_name, :email
+  validates_format_of :email,:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
   before_save :default_pass
     def self.random_string(len)
       #generate a random password consisting of strings and digits
@@ -40,18 +41,25 @@ class User < ActiveRecord::Base
       self.save
       #Notifications.deliver_forgot_password(self.email, self.login, new_pass)
     end
+	 def default_user
+	newuser = User.new({ :email => 'admin@example.com', :user_name => 'admin', :password => '12346', :password_confirmation => pass})
+	newuser.skip_confirmation!
+	newuser.save
+	end
   def default_pass
       #create a default password
     if  self.hashed_password.nil?
-        password = '_12346'
+        password = '12346'
          self.is_first_time = 1
          self.failed_attempts=0
          self.salt = User.random_string(10) if !self.salt?
          #Rails.logger.debug{self.inspect}
-         self.hashed_password = User.encrypt(password, self.salt)
+         self.hashed_password =  User.encrypt(password, self.salt)
+		 #User.new(:password => password).encrypted_password
 
      end
   end
+ 
   def self.change_password(username,password)
 
     u=find(:first, :conditions=>["user_name = ?", username])

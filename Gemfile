@@ -28,6 +28,7 @@ group :development do
   gem 'annotate', '2.5.0'
 end
 
+
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'rails3-jquery-autocomplete'

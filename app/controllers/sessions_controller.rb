@@ -37,7 +37,7 @@ before_filter :login_required,:only=>['password_change']
         if @session.save
         flash[:error] = "Login failed,please try again."
         #Rails.logger.debug{"Login failed for user "+params[:user][:login].to_s}
-        render :layout=> false
+        #render :layout=> false
         end
       end
     else

@@ -30,9 +30,7 @@
             <li><%= link_to "Help",:controller=>"help" %></li>
             <li><%= link_to "logout "+@current_user.user_name,:controller=>"sessions",:action=>"logout" %></li>
           </ul>
-          <form class="navbar-form navbar-right">
-            <input type="text" class="form-control" placeholder="Search...">
-          </form>
+
         </div>
       </div>
     </div>
@@ -40,37 +38,38 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
+			<li class="disabled"><a href=""><Strong>Nav Links</Strong></a></li>
             <li class="<%= "active" if controller.controller_name.to_s.eql?"dashboard"%>" ><%= link_to "Overview",:controller=>"dashboard" %></li>
             <li class="<%= "active" if controller.controller_name.to_s.eql?"items"%>" ><%= link_to "Inventory",:controller=>"items" %></li>
             <li class="<%= "active" if controller.controller_name.to_s.eql?"sales"%>" ><%= link_to "Sales",:controller=>"sales" %></li>
-            <li class="<%= "active" if controller.controller_name.to_s.eql?"reports"%>" ><%= link_to "Reports",:controller=>"reports" %></li>
+            
           </ul>
           <ul class="nav nav-sidebar">
-            <li class="disabled"><a href="">Quick Actions</a></li>
-            <li class="<%= "active" if controller.controller_name.to_s.eql?"items" and controller.action_name.to_s.eql?"new"  %>" ><%= link_to "Add Product",:controller=>"items",:action=>"new" %></li>
-            <li class="<%= "active" if controller.controller_name.to_s.eql?"sales"and controller.action_name.to_s.eql?"new"%>"  ><%= link_to "Add Sale",:controller=>"sale_items",:action=>"new" %></li>
-            <li class="<%= "active" if controller.controller_name.to_s.eql?"batches"and controller.action_name.to_s.eql?"new"%>" ><%= link_to "Add Batch",:controller=>"batches",:action=>"new" %></li>
+            <li class="disabled"><a href=""><Strong>Quick Actions</Strong></a></li>
+            <li class="<%= "active" if controller.controller_name.to_s.eql?"items" and controller.action_name.to_s.eql?"new"  %>" ><%= link_to "Add New Product",:controller=>"items",:action=>"new" %></li>
+            <li class="<%= "active" if controller.controller_name.to_s.eql?"sales"and controller.action_name.to_s.eql?"new"%>"  ><%= link_to "Make New Sale",:controller=>"sale_items",:action=>"new" %></li>
+           
           </ul>
           <ul class="nav nav-sidebar">
-            <li class="disabled"><a href="">Quick Reports</a></li>
+            <li class="disabled"><a href=""><Strong>Search & Reports</Strong></a></li>
             <li class="<%= "active" if controller.controller_name.to_s.eql?"items" and controller.action_name.to_s.eql?"search"  %>" ><%= link_to "Quick Search",:controller=>"search",:action=>"search" %></li>
             <li class="<%= "active" if controller.controller_name.to_s.eql?"reports" and controller.action_name.to_s.eql?"daily_sales"  %>" ><%= link_to "Sales Reports",:controller=>"reports",:action=>"daily_sales" %></li>
           </ul>
-        </div>
-<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-<div class="container">
-  <!--<ol class="breadcrumb">
-  <li><a href="#"><%=controller.controller_name.to_s%></a></li>
-  <li><a href="#"><%=controller.action_name.to_s%></a></li>
-  <li class="active">Data</li>
-</ol>-->
-<%= render "layouts/notifications" %>
-<%= yield %>
-</div>
-</div>
+	</div>
+	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		<div class="container">
+			<!--<ol class="breadcrumb">
+			<li><a href="#"><%=controller.controller_name.to_s%></a></li>
+			<li><a href="#"><%=controller.action_name.to_s%></a></li>
+			<li class="active">Data</li>
+			</ol>-->
+			<%= render "layouts/notifications" %>
+			<%= yield %>
+		</div>
+	</div>
 </body>
 <div id="footer" style="padding:10px 0; bottom:0px;">
-       <div class="footer"><center><p class="text-muted">&copy;<%=DateTime.now.year.to_s%> SAGE Pharmacy &bull; Powered by e-consult-systems </p></center> </div>
+       <div class="footer"><center><p class="text-muted">&copy;<%=DateTime.now.year.to_s%> SAGE Pharmacy &bull; Created by e-consult-systems </p></center> </div>
 </div>
 </body>
 </html>

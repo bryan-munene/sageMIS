@@ -4,7 +4,7 @@ class SaleItemsController < ApplicationController
   def index
     #@sale_items = SaleItem.all
     if params[:search]
-     @sale_items = Item.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 15, :page => params[:page])
+     @sale_items = Item.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 25, :page => params[:page])
     #Rails.logger.debug "#{@sale_items.inspect}"
     else
       @sale_items = SaleItem.all
