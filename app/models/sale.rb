@@ -17,14 +17,15 @@ class Sale < ActiveRecord::Base
     #Gets the sale items for the current sale and cumulates them before posting them
     @saleitems = SaleItem.in_progress
     @items_to_update = @saleitems
-    totalcost = 0.0
+	totalcost = 0.0
     totaldiscount = 0.0
     totalitems = 0.0
     if @saleitems && @saleitems.size>0
       for sale in @saleitems
         totalcost = totalcost + sale.linecost.to_f
-        #totaldiscount =
+		#totaldiscount =
         totalitems = totalitems + sale.quantity.to_f  
+		totalcost = totalcost - discountamount
       end
     end
     #create the sale and update the existing sales items
@@ -33,7 +34,7 @@ class Sale < ActiveRecord::Base
     self.user =0
     self.mode_of_payment = 1
     self.valueofsale =totalcost
-    #self.discountamount
+    self.discountamount
     #self.discountamount = 0.0
     
     #call the update method

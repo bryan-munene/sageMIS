@@ -123,18 +123,19 @@ class ItemsController < ApplicationController
 
           old_item_number = row[0].to_s.encode('utf-8', :invalid => :replace)
           name = row[1].to_s.encode('utf-8', :invalid => :replace)
-          description = row[2].to_s.encode('UTF-8', :invalid => :replace)
-          attribute =row[3].to_s.encode('UTF-8', :invalid => :replace)
-          size = row[4].to_s.encode('UTF-8', :invalid => :replace)
-          regular_price = row[5].to_f
-          dosage = row[6].to_s.encode('UTF-8', :invalid => :replace)
-          manufacturer = row[7].to_s.encode('UTF-8', :invalid => :replace)
-          source = row[8].to_s.encode('UTF-8', :invalid => :replace)
+	      drug_name = row[2].to_s.encode('utf-8', :invalid => :replace)
+          description = row[3].to_s.encode('UTF-8', :invalid => :replace)
+          attribute =row[4].to_s.encode('UTF-8', :invalid => :replace)
+          size = row[5].to_s.encode('UTF-8', :invalid => :replace)
+          regular_price = row[6].to_f
+          dosage = row[7].to_s.encode('UTF-8', :invalid => :replace)
+          manufacturer = row[8].to_s.encode('UTF-8', :invalid => :replace)
+          source = row[9].to_s.encode('UTF-8', :invalid => :replace)
           is_import = true
           if count==1
             #ignore this row as it is the header row
           else
-            item = {:old_item_number=>old_item_number,:cvs_import=>is_import,:item_name=>name,:item_description=>description,:item_attribute=>attribute,:size=>size,:original_price=>regular_price,:dosage=>dosage,:manufacturer=>manufacturer,:source=>source,:buying_price=>0}
+            item = {:old_item_number=>old_item_number,:cvs_import=>is_import,:item_name=>name,:item_drug_name=>drug_name,:item_description=>description,:item_attribute=>attribute,:size=>size,:original_price=>regular_price,:dosage=>dosage,:manufacturer=>manufacturer,:source=>source,:buying_price=>0}
             @item = Item.new(item)
             if !@item.save
               Rails.logger.error{"Failed Creating the item"}

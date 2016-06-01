@@ -1,0 +1,29 @@
+<table>
+  <tr>
+    <th>Backup log date</th>
+    <th>Start date</th>
+    <th>Status</th>
+    <th>Days pending</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @backuplogs.each do |backuplog| %>
+  <tr>
+    <td><%= backuplog.backup_log_date %></td>
+    <td><%= backuplog.start_date %></td>
+    <td><%= backuplog.status %></td>
+    <td><%= backuplog.days_pending %></td>
+    <td><%= backuplog.user_id %></td>
+    <td><%= link_to 'Show', backuplog %></td>
+    <td><%= link_to 'Edit', edit_backuplog_path(backuplog) %></td>
+    <td><%= link_to 'Destroy', backuplog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Backuplog', new_backuplog_path %>

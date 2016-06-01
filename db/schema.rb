@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140729154830) do
+ActiveRecord::Schema.define(:version => 20160601192710) do
 
   create_table "backuplogs", :force => true do |t|
     t.datetime "backup_log_date"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(:version => 20140729154830) do
   create_table "items", :force => true do |t|
     t.string   "item_code"
     t.string   "item_name"
+    t.string   "item_drug_name"
     t.string   "item_attribute"
     t.string   "size"
     t.decimal  "buying_price",       :precision => 10, :scale => 0

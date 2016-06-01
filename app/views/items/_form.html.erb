@@ -17,6 +17,10 @@
     <td><%= f.label :item_name  %><br /></td>
     <td><%= f.text_field :item_name , :size => 150 %></td>
   </div></tr>
+<tr>  <div class="field">
+    <td><%= f.label :item_drug_name  %><br /></td>
+    <td><%= f.text_field :item_drug_name , :size => 150 %></td>
+  </div></tr>
 
   <tr><div class="field">
     <td><%= f.label :item_attribute %><br /></td>
@@ -49,12 +53,10 @@
   </div></tr>
   <tr><div class="field">
     <td><%= f.label :tax_class %><br /></td>
-
     <td><%=select_tag "tax_class", options_from_collection_for_select(Taxcode.all, "id", "name"), prompt: "Select item tax class"%></td>
   </div></tr>
   <tr><div class="field">
     <td><%= f.label :warehouse %><br />
-
     <td><%=select_tag "warehouse", options_from_collection_for_select(Warehouse.all, "id", "name"), prompt: "Select warehouse"%></td>
   </div></tr>
  <tr> <div class="actions">

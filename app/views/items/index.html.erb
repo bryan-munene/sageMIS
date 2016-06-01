@@ -8,6 +8,7 @@
     <tr>
     <th>Item code</th>
     <th>Item name</th>
+    <th>Item drug name</th>
     <th>Item attribute</th>
     <th>Size</th>
     <th>Batches</th>
@@ -20,6 +21,7 @@
   <tr>
     <td><%= item.item_code %></td>
     <td><%= link_to item.item_name, item %></td>
+    <td><%= item.item_drug_name %></td>
     <td><%= item.item_attribute %></td>
     <td><%= item.size %></td>
     <% stock_level_detail = stock_display(item.id) %>
