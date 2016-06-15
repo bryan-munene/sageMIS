@@ -23,18 +23,17 @@ class Sale < ActiveRecord::Base
     if @saleitems && @saleitems.size>0
       for sale in @saleitems
         totalcost = totalcost + sale.linecost.to_f
-		#totaldiscount =
+		totaldiscount = discountamount.to_f
         totalitems = totalitems + sale.quantity.to_f  
-		totalcost = totalcost - discountamount
-      end
+	  end
     end
     #create the sale and update the existing sales items
     self.number_of_items = totalitems
     self.till_no =0
     self.user =0
     self.mode_of_payment = 1
-    self.valueofsale =totalcost
     self.discountamount
+    self.valueofsale =totalcost - discountamount
     #self.discountamount = 0.0
     
     #call the update method
@@ -47,7 +46,7 @@ class Sale < ActiveRecord::Base
     #Rails.logger.debug "#{@items_to_update.inspect}"
     for sale in @items_to_update
         deduct_from_inventory(sale.item_id,sale.quantity)  
-      end
+    end
   end
   def deduct_from_inventory(itemid,quantity)
     #deducts a given amount from the inventory upon update of a sale

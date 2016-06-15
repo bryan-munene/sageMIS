@@ -3,13 +3,14 @@ class Item < ActiveRecord::Base
   attr_accessible  :buying_price, :calculated_selling,:adjusted_price, :custom_attribute, :custom_size, :item_attribute, :item_code, :item_name, :item_drug_name, :markup, :size, :source, :tax_class, :warehouse,:item_description,:dosage,:manufacturer,:original_price,:cvs_import,:old_item_number,:creator
   before_validation :capitalize_item_name,:capitalize_item_drug_name,:default_space_values,:create_markup,:create_selling_price
   after_save :generate_code,:generate_default_batch
- # validates :item_name,:size,:tax_class,:warehouse,:presence=>true
+  validates :item_name,:size,:tax_class,:warehouse,:presence=>true
   validates :adjusted_price ,:presence=>true
   validates_length_of :item_name, :minimum => 3
   validates_length_of :item_drug_name, :minimum => 3
   validates_numericality_of :adjusted_price,:buying_price,:calculated_selling
   validate :price_is_sensible
   validate :adjusted_price_sensible
+  #validate :unique_item
   has_many :batches
 
 
@@ -30,12 +31,17 @@ class Item < ActiveRecord::Base
     #miscellaneous price checks here
    # Rails.logger.debug "#{self.inspect}"
     if self.adjusted_price.to_i == 0 
-      #errors.add("Selling Price","cannot be zero")
+      errors.add("Selling Price","cannot be zero")
       self.adjusted_price = self.calculated_selling.to_f
     end
-
   end
-  def default_space_values
+  def unique_item
+    #uniqueness of each item is checked here to avoid repetition
+   # Rails.logger.debug "#{self.inspect}"
+	
+  end
+ 
+ def default_space_values
       #set all non created params to zero or nil
     if self.adjusted_price.nil?
       
@@ -45,6 +51,7 @@ class Item < ActiveRecord::Base
        self.markup = 0
      end
   end
+
   def create_selling_price
       #add markup then get the tax amount for the tax class
     #get tax amount
